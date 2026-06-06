@@ -81,16 +81,11 @@ export default function HomeContactSection() {
   };
 
   const contactInfo = [
-    {
-      icon: Phone,
-      text: "+91 85878 70707",
-      href: "tel:+9185878 70707",
-      color: "blue",
-    },
+    
     {
       icon: Mail,
-      text: "hello@marktaleworld.com",
-      href: "mailto:hello@marktaleworld.com",
+      text: "teammarktaleworld@gmail.com",
+      href: "mailto:teammarktaleworld@gmail.com",
       color: "yellow",
     },
     { icon: MapPin, text: "Dwarka, New Delhi Bharat", href: "#", color: "black" },

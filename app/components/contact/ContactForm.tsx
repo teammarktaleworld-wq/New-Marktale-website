@@ -8,7 +8,7 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { MapPin, Phone, Mail, Send, CheckCircle, AlertCircle, Loader2 } from 'lucide-react';
+import { MapPin, Mail, Send, CheckCircle, AlertCircle, Loader2 } from 'lucide-react';
 import { services } from '@/lib/servicesData';
 
 type Status = 'idle' | 'loading' | 'success' | 'error';
@@ -51,7 +51,6 @@ export default function ContactForm() {
       setStatus('success');
       setFormData({
         name: '',
-        phone: '',
         email: '',
         service: 'Marketing as a Service (MaaS)',
         message: '',
@@ -85,17 +84,12 @@ export default function ContactForm() {
             </p>
 
             <div className="space-y-8">
-              <div className="flex items-start">
+              {/* <div className="flex items-start">
                 <div className="w-12 h-12 bg-neutral-100 rounded-lg flex items-center justify-center text-kestone-black mr-6 shrink-0">
-                  <Phone size={24} />
+                
                 </div>
-                <div>
-                  <h4 className="text-lg font-bold text-kestone-black mb-1">Call Us</h4>
-                  <a href="tel:+9185878 70707" className="text-gray-600 hover:text-kestone-red transition-colors">
-                    +91-85878 70707
-                  </a>
-                </div>
-              </div>
+
+              </div> */}
 
               <div className="flex items-start">
                 <div className="w-12 h-12 bg-neutral-100 rounded-lg flex items-center justify-center text-kestone-black mr-6 shrink-0">
@@ -103,8 +97,8 @@ export default function ContactForm() {
                 </div>
                 <div>
                   <h4 className="text-lg font-bold text-kestone-black mb-1">Email Us</h4>
-                  <a href="mailto:hello@marktaleworld.com" className="text-gray-600 hover:text-kestone-red transition-colors">
-                    hello@marktaleworld.com
+                  <a href="mailto:teammarktaleworld@gmail.com" className="text-gray-600 hover:text-kestone-red transition-colors">
+                    teammarktaleworld@gmail.com
                   </a>
                 </div>
               </div>

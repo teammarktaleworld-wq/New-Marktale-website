@@ -7,8 +7,7 @@
 //   const [settings, setSettings] = useState({
 //     siteName: "MarkTale",
 //     tagline: "Powered by AI",
-//     email: "hello@marktaleworld.com",
-//     phone: "+91-8587870707",
+//     email: "teammarktaleworld@gmail.com",
 //     address: "Plot no. 141, Sec. 14, Dwarka, New Delhi – 110078",
 //     growth: "10x",
 //     brands: "150+",
@@ -171,8 +170,7 @@ export default function Settings() {
   const [settings, setSettings] = useState<SettingsState>({
     siteName: "MarkTale",
     tagline: "Powered by AI",
-    email: "hello@marktaleworld.com",
-    phone: "+91-8587870707",
+    email: "teammarktaleworld@gmail.com",
     address: "Plot no. 141, Sec. 14, Dwarka, New Delhi – 110078",
     growth: "10x",
     brands: "150+",

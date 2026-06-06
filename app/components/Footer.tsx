@@ -274,18 +274,7 @@ export default function Footer() {
                   Plot no. 141, Sec. 14, Dwarka, New Delhi – 110078
                 </span>
               </li>
-              <li className="flex items-center gap-3 group">
-                <Phone
-                  size={18}
-                  className="text-blue-400 group-hover:scale-110 transition-transform"
-                />
-                <a
-                  href="tel:+918527664228"
-                  className="text-white/50 hover:text-blue-400 transition-colors text-sm"
-                >
-                  +91-8587870707
-                </a>
-              </li>
+             
               <li className="flex items-center gap-3 group">
                 <Mail
                   size={18}
@@ -295,7 +284,7 @@ export default function Footer() {
                   href="mailto:info@marktaleworld.com"
                   className="text-white/50 hover:text-blue-400 transition-colors text-sm"
                 >
-                  hello@marktaleworld.com
+                  teammarktaleworld@gmail.com
                 </a>
               </li>
             </ul>

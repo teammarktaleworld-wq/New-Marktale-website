@@ -24,7 +24,7 @@ const plans = [
     name: "Startup Building Plan",
     icon: Rocket,
     tagline: "Best for new startups & founders",
-    price: "25,000",
+    // price: "25,000",
     secondMonthPrice: "15,000",
     features: [
       "Website + Domain + Hosting",
@@ -44,7 +44,7 @@ const plans = [
     name: "Growth Plan",
     icon: TrendingUp,
     tagline: "For businesses ready to scale",
-    price: "50,000",
+    // price: "50,000",
     secondMonthPrice: "35,000",
     features: [
       "Includes everything in Startup Plan",
@@ -195,9 +195,9 @@ export default function PricingSection() {
                   <div className="mb-6 pb-6 border-b border-gray-100">
                     <div className="flex items-baseline gap-2">
                       <span className="text-5xl font-black text-black">
-                        ₹{plan.price}
+                        {plan.price}
                       </span>
-                      <span className="text-gray-500 text-sm">/ 1st Month</span>
+                      {/* <span className="text-gray-500 text-sm">/ 1st Month</span> */}
                     </div>
                     <div className="flex items-center gap-2 mt-2">
                       <div className="h-px flex-1 bg-gradient-to-r from-transparent via-gray-200 to-transparent" />

@@ -147,7 +147,7 @@ function getTransporter() {
     port: Number(process.env.SMTP_PORT), // 465
     secure: true, // true for port 465 (SSL)
     auth: {
-      user: process.env.SMTP_USER, // hello@marktaleworld.com
+      user: process.env.SMTP_USER, //teammarktaleworld@gmail.com
       pass: process.env.SMTP_PASS, // kautilya@123
     },
   });
@@ -206,14 +206,14 @@ export async function POST(req: NextRequest) {
 
     // await transporter.sendMail({
     //   from: `"MarkTale Website" <${process.env.SMTP_USER}>`,
-    //   to: 'hello@marktaleworld.com',
+    //   to: 'teammarktaleworld@gmail.com',
     //   subject: `New Enquiry from ${name} — ${service}`,
     //   html: htmlBody,
     // });
 
     const adminMail = await transporter.sendMail({
       from: `"MarkTale Website" <${process.env.SMTP_USER}>`,
-      to: "hello@marktaleworld.com",
+      to: "teammarktaleworld@gmail.com",
       subject: `New Enquiry from ${name} — ${service}`,
       html: htmlBody,
     });

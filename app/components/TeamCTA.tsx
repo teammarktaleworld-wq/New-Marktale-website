@@ -26,12 +26,6 @@ export default function TeamCTA() {
 
   const contactMethods = [
     {
-      icon: Phone,
-      label: "Call Us",
-      value: "+91 85878 70707",
-      color: "blue",
-    },
-    {
       icon: Mail,
       label: "Email Us",
       value: "teammarktaleworld@gmail.com",
@@ -150,29 +144,26 @@ export default function TeamCTA() {
               >
                 <div className="relative bg-white border border-gray-200 rounded-2xl p-4 text-center shadow-sm hover:shadow-xl transition-all duration-300">
                   <div
-                    className={`w-10 h-10 rounded-xl ${
-                      stat.color === "blue"
+                    className={`w-10 h-10 rounded-xl ${stat.color === "blue"
                         ? "bg-blue-100 group-hover:bg-blue-600"
                         : stat.color === "yellow"
                           ? "bg-yellow-100 group-hover:bg-yellow-500"
                           : "bg-gray-100 group-hover:bg-black"
-                    } flex items-center justify-center mx-auto mb-2 transition-all duration-300`}
+                      } flex items-center justify-center mx-auto mb-2 transition-all duration-300`}
                   >
                     <stat.icon
-                      className={`w-5 h-5 transition-colors duration-300 ${
-                        stat.color === "blue"
+                      className={`w-5 h-5 transition-colors duration-300 ${stat.color === "blue"
                           ? "text-blue-600 group-hover:text-white"
                           : stat.color === "yellow"
                             ? "text-yellow-600 group-hover:text-black"
                             : "text-black group-hover:text-white"
-                      }`}
+                        }`}
                     />
                   </div>
                   <div className="flex items-center justify-center gap-2">
                     <p className="text-xl font-bold text-black">{stat.value}</p>
                     <span
-                      className={`text-[10px] font-semibold px-1.5 py-0.5 rounded ${
-                        hoveredStat === idx
+                      className={`text-[10px] font-semibold px-1.5 py-0.5 rounded ${hoveredStat === idx
                           ? stat.color === "blue"
                             ? "bg-blue-600 text-white"
                             : stat.color === "yellow"
@@ -183,7 +174,7 @@ export default function TeamCTA() {
                             : stat.color === "yellow"
                               ? "bg-yellow-100 text-yellow-700"
                               : "bg-gray-100 text-gray-700"
-                      } transition-all duration-300`}
+                        } transition-all duration-300`}
                     >
                       {stat.trend}
                     </span>
@@ -204,35 +195,32 @@ export default function TeamCTA() {
                 viewport={{ once: true }}
                 transition={{ delay: 0.3 + idx * 0.1 }}
                 whileHover={{ y: -3 }}
-                className={`flex items-center gap-3 px-4 py-2 rounded-full border transition-all duration-300 cursor-pointer ${
-                  method.color === "blue"
+                className={`flex items-center gap-3 px-4 py-2 rounded-full border transition-all duration-300 cursor-pointer ${method.color === "blue"
                     ? "bg-blue-50 border-blue-200 hover:bg-blue-100"
                     : method.color === "yellow"
                       ? "bg-yellow-50 border-yellow-200 hover:bg-yellow-100"
                       : "bg-gray-50 border-gray-200 hover:bg-gray-100"
-                }`}
+                  }`}
               >
                 <div
-                  className={`w-8 h-8 rounded-full ${
-                    method.color === "blue"
+                  className={`w-8 h-8 rounded-full ${method.color === "blue"
                       ? "bg-blue-600"
                       : method.color === "yellow"
                         ? "bg-yellow-500"
                         : "bg-black"
-                  } flex items-center justify-center`}
+                    } flex items-center justify-center`}
                 >
                   <method.icon className="w-4 h-4 text-white" />
                 </div>
                 <div>
                   <p className="text-xs text-gray-500">{method.label}</p>
                   <p
-                    className={`text-sm font-semibold ${
-                      method.color === "blue"
+                    className={`text-sm font-semibold ${method.color === "blue"
                         ? "text-blue-600"
                         : method.color === "yellow"
                           ? "text-yellow-600"
                           : "text-black"
-                    }`}
+                      }`}
                   >
                     {method.value}
                   </p>
@@ -283,13 +271,12 @@ export default function TeamCTA() {
                   className="flex items-center gap-2 px-3 py-1.5 bg-gray-50 rounded-full border border-gray-200"
                 >
                   <badge.icon
-                    className={`w-3.5 h-3.5 ${
-                      badge.color === "blue"
+                    className={`w-3.5 h-3.5 ${badge.color === "blue"
                         ? "text-blue-600"
                         : badge.color === "yellow"
                           ? "text-yellow-500"
                           : "text-black"
-                    }`}
+                      }`}
                   />
                   <span className="text-xs font-medium text-gray-600">
                     {badge.name}
