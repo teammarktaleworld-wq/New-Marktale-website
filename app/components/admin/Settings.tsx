@@ -170,6 +170,7 @@ export default function Settings() {
   const [settings, setSettings] = useState<SettingsState>({
     siteName: "MarkTale",
     tagline: "Powered by AI",
+    phone: "",
     email: "teammarktaleworld@gmail.com",
     address: "Plot no. 141, Sec. 14, Dwarka, New Delhi – 110078",
     growth: "10x",

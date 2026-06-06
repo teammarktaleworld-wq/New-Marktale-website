@@ -8,7 +8,6 @@ import {
   Send,
   Sparkles,
   CheckCircle,
-  Phone,
   Mail,
   MapPin,
   Clock,

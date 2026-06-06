@@ -13,7 +13,6 @@ import {
   Clock,
   Star,
   MessageCircle,
-  Phone,
   Mail,
   MapPin,
   CheckCircle,

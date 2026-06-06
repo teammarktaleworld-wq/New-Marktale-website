@@ -11,7 +11,6 @@ import {
   Instagram,
   Mail,
   MapPin,
-  Phone,
   Sparkles,
   ArrowRight,
   Send,

@@ -52,6 +52,7 @@ export default function ContactForm() {
       setFormData({
         name: '',
         email: '',
+        phone:"string",
         service: 'Marketing as a Service (MaaS)',
         message: '',
       });

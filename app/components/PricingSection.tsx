@@ -356,7 +356,7 @@ export default function PricingSection() {
               </motion.div>
 
               <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4">
-                Let's talk about your goals
+                <div> Let&apos;s talk </div>
               </h3>
               <p className="text-blue-100 max-w-xl mx-auto mb-8">
                 Book a free consultation and we'll help you choose the right

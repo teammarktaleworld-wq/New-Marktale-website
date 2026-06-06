@@ -64,7 +64,7 @@ const workItems = [
     title: "Maggo Play School",
     category: "Education",
     country: "India",
-    image: "/Feature_logos/maggo.png", 
+    image: "/Feature_logos/maggo.png",
     tags: ["Digital Learning", "Engagement"],
     challenge: "Creating joyful learning experiences for young minds in Delhi with innovative, localized interactive digital preschool management frameworks."
   },
@@ -74,7 +74,7 @@ const workItems = [
     title: "BG Foundation",
     category: "NGO",
     country: "Canada",
-    image: "/Feature_logos/foundation.jpeg", 
+    image: "/Feature_logos/foundation.jpeg",
     tags: ["Social Impact", "Transformation"],
     challenge: "Empowering communities through strategic digital transformation resources and localized outreach initiatives managed across Canada."
   },
@@ -134,7 +134,7 @@ const workItems = [
     title: "Read Abroad",
     category: "Education",
     country: "Global",
-    image: "/Feature_logos/read.jpeg", 
+    image: "/Feature_logos/read.jpeg",
     tags: ["Consulting", "Global Reach"],
     challenge: "Connecting students seamlessly with international educational opportunities through intuitive, unified cross-border digital consultation platforms."
   },
@@ -144,7 +144,7 @@ const workItems = [
     title: "Writing Rodgers",
     category: "Education",
     country: "Global",
-    image: "/Feature_logos/writing.png", 
+    image: "/Feature_logos/writing.png",
     tags: ["Content Architecture", "EdTech"],
     challenge: "Valuing structural academic workflows with crisp, optimized content strategies designed to elevate student-centric research portfolios."
   }
@@ -175,11 +175,10 @@ export default function WorkGallery() {
               setActiveCategory(cat);
               setVisibleCount(6);
             }}
-            className={`px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider border transition-all duration-300 ${
-              activeCategory === cat
+            className={`px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider border transition-all duration-300 ${activeCategory === cat
                 ? "bg-zinc-950 border-zinc-950 text-white shadow-lg scale-105"
                 : "bg-zinc-50 border-zinc-200 text-zinc-500 hover:text-zinc-900 hover:bg-zinc-100/80"
-            }`}
+              }`}
           >
             {cat}
           </button>
