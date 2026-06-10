@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import Script from 'next/script';
+import Script from "next/script";
 
-const GA_ID = 'G-N1L0FK93ML';
+const GA_ID = "G-N1L0FK93ML";
 
 export default function GoogleAnalytics() {
   return (

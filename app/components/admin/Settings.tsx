@@ -141,16 +141,6 @@
 //   );
 // }
 
-
-
-
-
-
-
-
-
-
-
 "use client";
 
 import { useState } from "react";
@@ -206,7 +196,9 @@ export default function Settings() {
           <div style={{ padding: "20px" }}>
             {(["siteName", "tagline"] as const).map((key) => (
               <div key={key} style={S.formGroup}>
-                <label style={S.label}>{key === "siteName" ? "Site Name" : "Tagline"}</label>
+                <label style={S.label}>
+                  {key === "siteName" ? "Site Name" : "Tagline"}
+                </label>
                 <input
                   style={S.input}
                   value={settings[key]}
@@ -224,7 +216,9 @@ export default function Settings() {
           <div style={{ padding: "20px" }}>
             {(["email", "phone"] as const).map((key) => (
               <div key={key} style={S.formGroup}>
-                <label style={S.label}>{key === "email" ? "Email" : "Phone"}</label>
+                <label style={S.label}>
+                  {key === "email" ? "Email" : "Phone"}
+                </label>
                 <input
                   style={S.input}
                   value={settings[key]}
@@ -252,12 +246,21 @@ export default function Settings() {
           <div style={S.cardHeader}>
             <span style={S.cardTitle}>Hero Stats</span>
           </div>
-          <div style={{ padding: "20px", display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 14 }}>
-            {([
-              ["Growth (e.g. 10x)", "growth"],
-              ["Brands (e.g. 150+)", "brands"],
-              ["Success % (e.g. 98%)", "success"],
-            ] as [string, keyof SettingsState][]).map(([label, key]) => (
+          <div
+            style={{
+              padding: "20px",
+              display: "grid",
+              gridTemplateColumns: "repeat(3, 1fr)",
+              gap: 14,
+            }}
+          >
+            {(
+              [
+                ["Growth (e.g. 10x)", "growth"],
+                ["Brands (e.g. 150+)", "brands"],
+                ["Success % (e.g. 98%)", "success"],
+              ] as [string, keyof SettingsState][]
+            ).map(([label, key]) => (
               <div key={key} style={S.formGroup}>
                 <label style={S.label}>{label}</label>
                 <input
@@ -271,7 +274,14 @@ export default function Settings() {
         </div>
       </div>
 
-      <div style={{ marginTop: 20, display: "flex", alignItems: "center", gap: 14 }}>
+      <div
+        style={{
+          marginTop: 20,
+          display: "flex",
+          alignItems: "center",
+          gap: 14,
+        }}
+      >
         <button style={S.btn("primary")} onClick={saveSettings}>
           <Icons.Save /> Save Settings
         </button>

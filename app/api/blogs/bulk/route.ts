@@ -14,7 +14,10 @@ export async function POST(req: NextRequest) {
     }
 
     if (!file.name.endsWith(".docx")) {
-      return NextResponse.json({ error: "Only .docx files are supported" }, { status: 400 });
+      return NextResponse.json(
+        { error: "Only .docx files are supported" },
+        { status: 400 },
+      );
     }
 
     // Parse docx using mammoth (server-side)
@@ -31,8 +34,11 @@ export async function POST(req: NextRequest) {
 
     if (blogChunks.length === 0) {
       return NextResponse.json(
-        { error: "No BLOG markers found. Each blog must start with 'BLOG 1', 'BLOG 2', etc." },
-        { status: 400 }
+        {
+          error:
+            "No BLOG markers found. Each blog must start with 'BLOG 1', 'BLOG 2', etc.",
+        },
+        { status: 400 },
       );
     }
 
@@ -45,7 +51,10 @@ export async function POST(req: NextRequest) {
     for (let i = 0; i < blogChunks.length; i++) {
       const chunk = blogChunks[i].trim();
       try {
-        const lines = chunk.split("\n").map((l) => l.trim()).filter(Boolean);
+        const lines = chunk
+          .split("\n")
+          .map((l) => l.trim())
+          .filter(Boolean);
 
         // First line: "BLOG N" marker — skip it
         const markerLine = lines[0];
@@ -54,7 +63,10 @@ export async function POST(req: NextRequest) {
         // Second line: title
         const title = lines[1];
         if (!title) {
-          errors.push({ marker: markerLine, error: "No title found after marker" });
+          errors.push({
+            marker: markerLine,
+            error: "No title found after marker",
+          });
           continue;
         }
 

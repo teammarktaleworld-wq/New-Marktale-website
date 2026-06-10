@@ -164,19 +164,6 @@
 //   );
 // }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 "use client";
 
 import { useState, useRef } from "react";
@@ -203,7 +190,10 @@ export default function Services({
   const [newName, setNewName] = useState("");
   const [editId, setEditId] = useState<number | null>(null);
   const [editName, setEditName] = useState("");
-  const [confirm, setConfirm] = useState<{ id: number; message: string } | null>(null);
+  const [confirm, setConfirm] = useState<{
+    id: number;
+    message: string;
+  } | null>(null);
   const nextId = useRef(services.length + 10);
 
   const addService = () => {

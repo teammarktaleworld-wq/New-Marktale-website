@@ -15,15 +15,6 @@
 // // const app = getApps().length ? getApp() : initializeApp(firebaseConfig);
 // // export const db = getFirestore(app);/
 
-
-
-
-
-
-
-
-
-
 // // import { initializeApp, getApps, getApp } from 'firebase/app';
 // // import { getFirestore } from 'firebase/firestore';
 // // import { getAuth, GoogleAuthProvider } from 'firebase/auth';
@@ -41,17 +32,6 @@
 // // export const db = getFirestore(app);
 // // export const auth = getAuth(app);
 // // export const googleProvider = new GoogleAuthProvider();
-
-
-
-
-
-
-
-
-
-
-
 
 // // lib/firebase.ts
 
@@ -78,14 +58,7 @@
 
 // export default app;
 
-
-
-
-
-
-
 // marktaleworld_updated-\app\lib\firebase.ts
-
 
 import { initializeApp, getApps, getApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
@@ -101,9 +74,7 @@ const firebaseConfig = {
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID!,
 };
 
-const app = getApps().length
-  ? getApp()
-  : initializeApp(firebaseConfig);
+const app = getApps().length ? getApp() : initializeApp(firebaseConfig);
 
 export const auth = getAuth(app);
 export const db = getFirestore(app);

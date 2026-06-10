@@ -1,13 +1,3 @@
-
-
-
-
-
-
-
-
-
-
 // "use client";
 
 // import { useEffect } from "react";
@@ -81,16 +71,6 @@
 //   );
 // }
 
-
-
-
-
-
-
-
-
-
-
 // "use client";
 
 // import { useEffect } from "react";
@@ -152,18 +132,6 @@
 //     </div>
 //   );
 // }
-
-
-
-
-
-
-
-
-
-
-
-
 
 // "use client";
 
@@ -237,19 +205,6 @@
 //     </div>
 //   );
 // }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // "use client";
 
@@ -331,18 +286,6 @@
 //     </div>
 //   );
 // }
-
-
-
-
-
-
-
-
-
-
-
-
 
 "use client";
 

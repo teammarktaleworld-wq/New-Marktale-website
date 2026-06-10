@@ -308,23 +308,6 @@
 //     return blogs.map((blog) => blog.slug);
 // }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 import {
   collection,
   getDocs,
@@ -336,8 +319,8 @@ import {
   query,
   orderBy,
   Timestamp,
-} from 'firebase/firestore';
-import { db } from '@/lib/firebase';
+} from "firebase/firestore";
+import { db } from "@/lib/firebase";
 
 export interface Blog {
   id?: string;
@@ -355,14 +338,17 @@ export interface Blog {
   updatedAt?: Timestamp;
 }
 
-const COLLECTION = 'blogs';
+const COLLECTION = "blogs";
 
 export async function getAllBlogs(): Promise<Blog[]> {
-  const q = query(collection(db, COLLECTION), orderBy('createdAt', 'desc'));
+  const q = query(collection(db, COLLECTION), orderBy("createdAt", "desc"));
   const snap = await getDocs(q);
-  return snap.docs.map((d) => ({ id: d.id, ...d.data() } as Blog));
+  return snap.docs.map((d) => ({ id: d.id, ...d.data() }) as Blog);
 }
-export async function togglePublish(id: string, published: boolean): Promise<void> {
+export async function togglePublish(
+  id: string,
+  published: boolean,
+): Promise<void> {
   await updateDoc(doc(db, COLLECTION, id), {
     published,
     updatedAt: Timestamp.now(),
@@ -380,7 +366,7 @@ export async function getBlogById(id: string): Promise<Blog | undefined> {
   return { id: snap.id, ...snap.data() } as Blog;
 }
 
-export async function createBlog(data: Omit<Blog, 'id'>): Promise<string> {
+export async function createBlog(data: Omit<Blog, "id">): Promise<string> {
   const ref = await addDoc(collection(db, COLLECTION), {
     ...data,
     createdAt: Timestamp.now(),
@@ -389,7 +375,10 @@ export async function createBlog(data: Omit<Blog, 'id'>): Promise<string> {
   return ref.id;
 }
 
-export async function updateBlog(id: string, data: Partial<Blog>): Promise<void> {
+export async function updateBlog(
+  id: string,
+  data: Partial<Blog>,
+): Promise<void> {
   await updateDoc(doc(db, COLLECTION, id), {
     ...data,
     updatedAt: Timestamp.now(),

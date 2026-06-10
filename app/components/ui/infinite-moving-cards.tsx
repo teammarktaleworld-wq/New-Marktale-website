@@ -51,12 +51,12 @@ export const InfiniteMovingCards = ({
       if (direction === "left") {
         containerRef.current.style.setProperty(
           "--animation-direction",
-          "forwards"
+          "forwards",
         );
       } else {
         containerRef.current.style.setProperty(
           "--animation-direction",
-          "reverse"
+          "reverse",
         );
       }
     }
@@ -77,7 +77,7 @@ export const InfiniteMovingCards = ({
       ref={containerRef}
       className={cn(
         "scroller relative z-20 max-w-7xl overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_10%,white_90%,transparent)]",
-        className
+        className,
       )}
     >
       <ul
@@ -85,11 +85,13 @@ export const InfiniteMovingCards = ({
         className={cn(
           "flex w-max min-w-full shrink-0 flex-nowrap gap-4 py-4",
           start && "animate-scroll",
-          pauseOnHover && "hover:[animation-play-state:paused]"
+          pauseOnHover && "hover:[animation-play-state:paused]",
         )}
-        style={{
-          "--gap": "1rem",
-        } as React.CSSProperties}
+        style={
+          {
+            "--gap": "1rem",
+          } as React.CSSProperties
+        }
       >
         {items.map((item, idx) => (
           <li
@@ -111,10 +113,11 @@ export const InfiniteMovingCards = ({
                       {[...Array(5)].map((_, i) => (
                         <svg
                           key={i}
-                          className={`w-4 h-4 ${i < Math.round(item.rating!)
-                            ? "text-yellow-400 fill-yellow-400"
-                            : "text-gray-300 fill-gray-300"
-                            }`}
+                          className={`w-4 h-4 ${
+                            i < Math.round(item.rating!)
+                              ? "text-yellow-400 fill-yellow-400"
+                              : "text-gray-300 fill-gray-300"
+                          }`}
                           xmlns="http://www.w3.org/2000/svg"
                           viewBox="0 0 24 24"
                         >

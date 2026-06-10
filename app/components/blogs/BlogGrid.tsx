@@ -68,29 +68,6 @@
 //     );
 // }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 "use client";
 
 import React, { useEffect, useState, useCallback } from "react";
@@ -108,7 +85,8 @@ import Link from "next/link";
 import { db } from "../../lib/firebase";
 import { collection, getDocs } from "firebase/firestore";
 
-const FALLBACK_IMAGE ="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=800&q=80";
+const FALLBACK_IMAGE =
+  "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=800&q=80";
 
 function getImage(url: string | undefined | null): string {
   if (!url || typeof url !== "string" || url.trim() === "")

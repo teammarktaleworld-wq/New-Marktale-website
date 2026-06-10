@@ -564,24 +564,6 @@
 //   );
 // }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // export const dynamic = "force-dynamic";
 
 // import React, { useState, useEffect, useCallback } from "react";
@@ -1318,23 +1300,6 @@
 //   );
 // }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 "use client";
 
 import { useState, useEffect } from "react";
@@ -1571,7 +1536,11 @@ const ls = {
     transition: "opacity 0.15s",
     ...(status === "Published"
       ? { background: "#10B98115", color: "#10B981", borderColor: "#10B98130" }
-      : { background: "#F59E0B15", color: "#F59E0B", borderColor: "#F59E0B30" }),
+      : {
+          background: "#F59E0B15",
+          color: "#F59E0B",
+          borderColor: "#F59E0B30",
+        }),
   }),
   // Thumb
   thumb: {
@@ -1770,15 +1739,20 @@ function BlogModal({
         year: "numeric",
       }),
       image: "",
-    }
+    },
   );
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [imgErr, setImgErr] = useState(false);
 
   return (
-    <div style={ls.overlay} onClick={(e) => e.target === e.currentTarget && !isSaving && onClose()}>
+    <div
+      style={ls.overlay}
+      onClick={(e) => e.target === e.currentTarget && !isSaving && onClose()}
+    >
       <div style={ls.modalBox}>
-        <div style={ls.modalTitle}>{blog ? "Edit Article" : "Draft New Article"}</div>
+        <div style={ls.modalTitle}>
+          {blog ? "Edit Article" : "Draft New Article"}
+        </div>
 
         {/* Title */}
         <div style={ls.formGroup}>
@@ -1806,7 +1780,13 @@ function BlogModal({
         <div style={ls.formGroup}>
           <label style={ls.label}>Full Content (HTML or Markdown)</label>
           <textarea
-            style={{ ...ls.input, minHeight: 160, resize: "vertical", fontFamily: "monospace", fontSize: 12 }}
+            style={{
+              ...ls.input,
+              minHeight: 160,
+              resize: "vertical",
+              fontFamily: "monospace",
+              fontSize: 12,
+            }}
             value={form.content}
             onChange={(e) => setForm({ ...form, content: e.target.value })}
             placeholder="<p>Write your full article here...</p>"
@@ -1822,7 +1802,9 @@ function BlogModal({
               value={form.category}
               onChange={(e) => setForm({ ...form, category: e.target.value })}
             >
-              {CATEGORIES.map((c) => <option key={c}>{c}</option>)}
+              {CATEGORIES.map((c) => (
+                <option key={c}>{c}</option>
+              ))}
             </select>
           </div>
           <div style={ls.formGroup}>
@@ -1830,7 +1812,9 @@ function BlogModal({
             <select
               style={ls.select}
               value={form.status}
-              onChange={(e) => setForm({ ...form, status: e.target.value as BlogStatus })}
+              onChange={(e) =>
+                setForm({ ...form, status: e.target.value as BlogStatus })
+              }
             >
               <option>Draft</option>
               <option>Published</option>
@@ -1866,7 +1850,10 @@ function BlogModal({
           <input
             style={ls.input}
             value={form.image}
-            onChange={(e) => { setImgErr(false); setForm({ ...form, image: e.target.value }); }}
+            onChange={(e) => {
+              setImgErr(false);
+              setForm({ ...form, image: e.target.value });
+            }}
             placeholder="https://example.com/image.jpg"
           />
           {form.image && !imgErr && (
@@ -1878,7 +1865,9 @@ function BlogModal({
             />
           )}
           {imgErr && (
-            <div style={ls.imgError}>⚠ Could not load image. Check the URL.</div>
+            <div style={ls.imgError}>
+              ⚠ Could not load image. Check the URL.
+            </div>
           )}
         </div>
 
@@ -1904,7 +1893,10 @@ function BlogModal({
           <button
             style={S.btn("primary")}
             disabled={isSaving || !form.title.trim()}
-            onClick={() => form.title.trim() && onSave({ ...form, _imageFile: imageFile } as any)}
+            onClick={() =>
+              form.title.trim() &&
+              onSave({ ...form, _imageFile: imageFile } as any)
+            }
           >
             {isSaving ? "Saving..." : blog ? "Save Changes" : "Publish Article"}
           </button>
@@ -1929,7 +1921,10 @@ function BulkModal({
   const [file, setFile] = useState<File | null>(null);
 
   return (
-    <div style={ls.overlay} onClick={(e) => e.target === e.currentTarget && !isUploading && onClose()}>
+    <div
+      style={ls.overlay}
+      onClick={(e) => e.target === e.currentTarget && !isUploading && onClose()}
+    >
       <div style={{ ...ls.modalBox, maxWidth: 520 }}>
         <div style={ls.modalTitle}>Bulk Import Articles</div>
 
@@ -1937,10 +1932,17 @@ function BulkModal({
           <div style={ls.instrTitle}>How to prepare your document</div>
           <ol style={ls.instrList}>
             <li>Open your Google Doc with all blog content</li>
-            <li>Each blog must start with a marker: <strong style={{ color: "#F1F5F9" }}>BLOG 1</strong>, <strong style={{ color: "#F1F5F9" }}>BLOG 2</strong>, etc.</li>
+            <li>
+              Each blog must start with a marker:{" "}
+              <strong style={{ color: "#F1F5F9" }}>BLOG 1</strong>,{" "}
+              <strong style={{ color: "#F1F5F9" }}>BLOG 2</strong>, etc.
+            </li>
             <li>The line after the marker becomes the title</li>
             <li>First paragraph after title = excerpt; rest = content</li>
-            <li>Download as <strong style={{ color: "#F1F5F9" }}>.docx</strong> format</li>
+            <li>
+              Download as <strong style={{ color: "#F1F5F9" }}>.docx</strong>{" "}
+              format
+            </li>
           </ol>
         </div>
 
@@ -1952,22 +1954,38 @@ function BulkModal({
             style={ls.fileInput}
             onChange={(e) => setFile(e.target.files?.[0] ?? null)}
           />
-          {file && <div style={ls.fileHint}>Selected: <strong style={{ color: "#94A3B8" }}>{file.name}</strong></div>}
+          {file && (
+            <div style={ls.fileHint}>
+              Selected:{" "}
+              <strong style={{ color: "#94A3B8" }}>{file.name}</strong>
+            </div>
+          )}
         </div>
 
         {result && (
           <div style={ls.resultBox}>
             <div style={ls.resultTitle}>{result.message}</div>
             {result.created?.map((b: any, i: number) => (
-              <div key={i} style={ls.resultItem}>✓ {b.title}</div>
+              <div key={i} style={ls.resultItem}>
+                ✓ {b.title}
+              </div>
             ))}
             {result.errors?.length > 0 && (
               <div style={ls.errorBox}>
-                <div style={{ fontSize: 12, fontWeight: 700, color: "#ef4444", marginBottom: 6 }}>
+                <div
+                  style={{
+                    fontSize: 12,
+                    fontWeight: 700,
+                    color: "#ef4444",
+                    marginBottom: 6,
+                  }}
+                >
                   Errors ({result.errors.length})
                 </div>
                 {result.errors.map((e: any, i: number) => (
-                  <div key={i} style={{ fontSize: 12, color: "#fca5a5" }}>{e.chunk || e.title}: {e.error}</div>
+                  <div key={i} style={{ fontSize: 12, color: "#fca5a5" }}>
+                    {e.chunk || e.title}: {e.error}
+                  </div>
                 ))}
               </div>
             )}
@@ -1975,7 +1993,13 @@ function BulkModal({
         )}
 
         <div style={ls.actions}>
-          <button style={S.btn("ghost")} onClick={onClose} disabled={isUploading}>Cancel</button>
+          <button
+            style={S.btn("ghost")}
+            onClick={onClose}
+            disabled={isUploading}
+          >
+            Cancel
+          </button>
           <button
             style={S.btn("primary")}
             disabled={!file || isUploading}
@@ -1997,7 +2021,10 @@ export default function Blogs() {
   // Modals
   const [modal, setModal] = useState<Blog | "add" | null>(null);
   const [bulkOpen, setBulkOpen] = useState(false);
-  const [confirm, setConfirm] = useState<{ id: string; message: string } | null>(null);
+  const [confirm, setConfirm] = useState<{
+    id: string;
+    message: string;
+  } | null>(null);
   const [isSaving, setIsSaving] = useState(false);
   const [isBulkUploading, setIsBulkUploading] = useState(false);
   const [bulkResult, setBulkResult] = useState<any>(null);
@@ -2018,7 +2045,7 @@ export default function Blogs() {
       const q = query(collection(db, "blogs"), orderBy("createdAt", "desc"));
       const snap = await getDocs(q);
       setBlogs(
-        snap.docs.map((d) => ({ id: d.id, ...(d.data() as Omit<Blog, "id">) }))
+        snap.docs.map((d) => ({ id: d.id, ...(d.data() as Omit<Blog, "id">) })),
       );
     } catch (err) {
       console.error("fetchBlogs:", err);
@@ -2027,7 +2054,9 @@ export default function Blogs() {
     }
   };
 
-  useEffect(() => { fetchBlogs(); }, []);
+  useEffect(() => {
+    fetchBlogs();
+  }, []);
 
   // ── Save (add / update) ────────────────────────────────────────────────────
   const handleSave = async (form: BlogForm & { _imageFile?: File }) => {
@@ -2049,7 +2078,11 @@ export default function Blogs() {
       if (modal && modal !== "add") {
         // Update existing
         const { id, slug: _slug, ...fields } = rest as Blog;
-        await updateDoc(doc(db, "blogs", (modal as Blog).id), { ...fields, image, updatedAt: Timestamp.now() });
+        await updateDoc(doc(db, "blogs", (modal as Blog).id), {
+          ...fields,
+          image,
+          updatedAt: Timestamp.now(),
+        });
       } else {
         // Create new
         const slug = (rest.title ?? "")
@@ -2090,10 +2123,16 @@ export default function Blogs() {
 
   // ── Toggle status ──────────────────────────────────────────────────────────
   const handleToggleStatus = async (blog: Blog) => {
-    const next: BlogStatus = blog.status === "Published" ? "Draft" : "Published";
+    const next: BlogStatus =
+      blog.status === "Published" ? "Draft" : "Published";
     try {
-      await updateDoc(doc(db, "blogs", blog.id), { status: next, updatedAt: Timestamp.now() });
-      setBlogs((prev) => prev.map((b) => b.id === blog.id ? { ...b, status: next } : b));
+      await updateDoc(doc(db, "blogs", blog.id), {
+        status: next,
+        updatedAt: Timestamp.now(),
+      });
+      setBlogs((prev) =>
+        prev.map((b) => (b.id === blog.id ? { ...b, status: next } : b)),
+      );
     } catch (err) {
       console.error("toggleStatus:", err);
     }
@@ -2122,7 +2161,8 @@ export default function Blogs() {
   const filtered = blogs.filter((b) => {
     const matchCat = filterCat === "All" || b.category === filterCat;
     const matchStatus = filterStatus === "All" || b.status === filterStatus;
-    const matchSearch = !search || b.title.toLowerCase().includes(search.toLowerCase());
+    const matchSearch =
+      !search || b.title.toLowerCase().includes(search.toLowerCase());
     return matchCat && matchStatus && matchSearch;
   });
 
@@ -2150,10 +2190,27 @@ export default function Blogs() {
         <div style={ls.headerBtns}>
           <button
             style={{ ...S.btn("ghost"), fontSize: 12 }}
-            onClick={() => { setBulkResult(null); setBulkOpen(true); }}
+            onClick={() => {
+              setBulkResult(null);
+              setBulkOpen(true);
+            }}
           >
             {/* <Icons.Upload /> Bulk Import */}
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg> Bulk Import
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+              <polyline points="17 8 12 3 7 8" />
+              <line x1="12" y1="3" x2="12" y2="15" />
+            </svg>{" "}
+            Bulk Import
           </button>
           <button style={S.btn("primary")} onClick={() => setModal("add")}>
             <Icons.Add /> New Article
@@ -2164,19 +2221,27 @@ export default function Blogs() {
       {/* ── Filters ────────────────────────────────────────────────────────── */}
       <div style={ls.filtersRow}>
         <div style={ls.searchWrap}>
-          <span style={ls.searchIcon}><Icons.Search /></span>
+          <span style={ls.searchIcon}>
+            <Icons.Search />
+          </span>
           <input
             style={ls.searchInput}
             placeholder="Search articles..."
             value={search}
-            onChange={(e) => { setSearch(e.target.value); setPage(1); }}
+            onChange={(e) => {
+              setSearch(e.target.value);
+              setPage(1);
+            }}
           />
         </div>
 
         <select
           style={ls.filterSelect}
           value={filterStatus}
-          onChange={(e) => { setFilterStatus(e.target.value); setPage(1); }}
+          onChange={(e) => {
+            setFilterStatus(e.target.value);
+            setPage(1);
+          }}
         >
           <option value="All">All Status</option>
           <option value="Published">Published</option>
@@ -2186,13 +2251,22 @@ export default function Blogs() {
         <select
           style={ls.filterSelect}
           value={filterCat}
-          onChange={(e) => { setFilterCat(e.target.value); setPage(1); }}
+          onChange={(e) => {
+            setFilterCat(e.target.value);
+            setPage(1);
+          }}
         >
           <option value="All">All Categories</option>
-          {CATEGORIES.map((c) => <option key={c}>{c}</option>)}
+          {CATEGORIES.map((c) => (
+            <option key={c}>{c}</option>
+          ))}
         </select>
 
-        <button style={{ ...S.btn("ghost"), padding: "8px 12px" }} onClick={fetchBlogs} title="Refresh">
+        <button
+          style={{ ...S.btn("ghost"), padding: "8px 12px" }}
+          onClick={fetchBlogs}
+          title="Refresh"
+        >
           <Icons.Refresh />
         </button>
       </div>
@@ -2226,37 +2300,49 @@ export default function Blogs() {
                   <tr key={b.id} style={{ borderBottom: "1px solid #0F172A" }}>
                     {/* Title + Thumb */}
                     <td style={{ ...ls.td, maxWidth: 280 }}>
-                      <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                      <div
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          gap: 10,
+                        }}
+                      >
                         {b.image ? (
                           <img
                             src={b.image}
                             alt=""
                             style={ls.thumb}
-                            onError={(e) => (e.currentTarget.style.display = "none")}
+                            onError={(e) =>
+                              (e.currentTarget.style.display = "none")
+                            }
                           />
                         ) : (
                           <div style={ls.thumbPlaceholder}>IMG</div>
                         )}
                         <div style={{ minWidth: 0 }}>
-                          <div style={{
-                            fontWeight: 600,
-                            color: "#F1F5F9",
-                            overflow: "hidden",
-                            textOverflow: "ellipsis",
-                            whiteSpace: "nowrap",
-                            fontSize: 13,
-                          }}>
-                            {b.title}
-                          </div>
-                          {b.excerpt && (
-                            <div style={{
-                              fontSize: 11,
-                              color: "#475569",
+                          <div
+                            style={{
+                              fontWeight: 600,
+                              color: "#F1F5F9",
                               overflow: "hidden",
                               textOverflow: "ellipsis",
                               whiteSpace: "nowrap",
-                              marginTop: 2,
-                            }}>
+                              fontSize: 13,
+                            }}
+                          >
+                            {b.title}
+                          </div>
+                          {b.excerpt && (
+                            <div
+                              style={{
+                                fontSize: 11,
+                                color: "#475569",
+                                overflow: "hidden",
+                                textOverflow: "ellipsis",
+                                whiteSpace: "nowrap",
+                                marginTop: 2,
+                              }}
+                            >
                               {b.excerpt}
                             </div>
                           )}
@@ -2275,12 +2361,26 @@ export default function Blogs() {
                     </td>
 
                     {/* Date */}
-                    <td style={{ ...ls.td, color: "#475569", fontSize: 12, whiteSpace: "nowrap" }}>
+                    <td
+                      style={{
+                        ...ls.td,
+                        color: "#475569",
+                        fontSize: 12,
+                        whiteSpace: "nowrap",
+                      }}
+                    >
                       {b.date || "—"}
                     </td>
 
                     {/* Read Time */}
-                    <td style={{ ...ls.td, color: "#475569", fontSize: 12, whiteSpace: "nowrap" }}>
+                    <td
+                      style={{
+                        ...ls.td,
+                        color: "#475569",
+                        fontSize: 12,
+                        whiteSpace: "nowrap",
+                      }}
+                    >
                       {b.readTime || "—"}
                     </td>
 
@@ -2297,13 +2397,28 @@ export default function Blogs() {
 
                     {/* Actions */}
                     <td style={{ ...ls.td, textAlign: "right" }}>
-                      <div style={{ display: "flex", gap: 6, justifyContent: "flex-end" }}>
-                        <button style={S.btn("ghost")} onClick={() => setModal(b)} title="Edit">
+                      <div
+                        style={{
+                          display: "flex",
+                          gap: 6,
+                          justifyContent: "flex-end",
+                        }}
+                      >
+                        <button
+                          style={S.btn("ghost")}
+                          onClick={() => setModal(b)}
+                          title="Edit"
+                        >
                           <Icons.Edit />
                         </button>
                         <button
                           style={S.btn("danger")}
-                          onClick={() => setConfirm({ id: b.id, message: `Permanently delete "${b.title}"?` })}
+                          onClick={() =>
+                            setConfirm({
+                              id: b.id,
+                              message: `Permanently delete "${b.title}"?`,
+                            })
+                          }
                           title="Delete"
                         >
                           <Icons.Delete />
@@ -2327,14 +2442,14 @@ export default function Blogs() {
               <button
                 style={ls.pageBtn(page <= 1)}
                 disabled={page <= 1}
-                onClick={() => setPage(p => p - 1)}
+                onClick={() => setPage((p) => p - 1)}
               >
                 ← Prev
               </button>
               <button
                 style={ls.pageBtn(page >= totalPages)}
                 disabled={page >= totalPages}
-                onClick={() => setPage(p => p + 1)}
+                onClick={() => setPage((p) => p + 1)}
               >
                 Next →
               </button>

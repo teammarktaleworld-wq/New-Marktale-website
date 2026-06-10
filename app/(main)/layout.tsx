@@ -10,9 +10,7 @@ export default function MainLayout({
     <>
       <Navbar />
 
-      <main className="pt-24">
-        {children}
-      </main>
+      <main className="pt-24">{children}</main>
 
       <Footer />
     </>

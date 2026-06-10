@@ -1,5 +1,3 @@
-
-
 // "use client";
 // export const dynamic = "force-dynamic";
 
@@ -506,36 +504,88 @@
 //   );
 // }
 
-
-
-
-
-
-
 "use client";
 export const dynamic = "force-dynamic";
 
 import React, { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { Search, Clock, User, ChevronRight, BookOpen, X, TrendingUp } from "lucide-react";
+import {
+  Search,
+  Clock,
+  User,
+  ChevronRight,
+  BookOpen,
+  X,
+  TrendingUp,
+} from "lucide-react";
 
 const ACCENT = { from: "#2563eb", mid: "#3b82f6", to: "#06b6d4" };
 
 const CATEGORIES = [
-  "All", "Leadership", "Career Growth", "Productivity",
-  "Mindset", "Technology", "Business", "Wellness", "Finance",
+  "All",
+  "Leadership",
+  "Career Growth",
+  "Productivity",
+  "Mindset",
+  "Technology",
+  "Business",
+  "Wellness",
+  "Finance",
 ];
 
-const CAT_COLORS: Record<string, { bg: string; text: string; border: string; glow: string }> = {
-  Leadership:      { bg: "#6366F112", text: "#6366F1", border: "#6366F130", glow: "#6366F120" },
-  "Career Growth": { bg: "#10B98112", text: "#10B981", border: "#10B98130", glow: "#10B98120" },
-  Productivity:    { bg: "#F59E0B12", text: "#F59E0B", border: "#F59E0B30", glow: "#F59E0B20" },
-  Mindset:         { bg: "#EC489912", text: "#EC4899", border: "#EC489930", glow: "#EC489920" },
-  Technology:      { bg: "#3B82F612", text: "#3B82F6", border: "#3B82F630", glow: "#3B82F620" },
-  Business:        { bg: "#8B5CF612", text: "#8B5CF6", border: "#8B5CF630", glow: "#8B5CF620" },
-  Wellness:        { bg: "#14B8A612", text: "#14B8A6", border: "#14B8A630", glow: "#14B8A620" },
-  Finance:         { bg: "#F9731612", text: "#F97316", border: "#F9731630", glow: "#F9731620" },
+const CAT_COLORS: Record<
+  string,
+  { bg: string; text: string; border: string; glow: string }
+> = {
+  Leadership: {
+    bg: "#6366F112",
+    text: "#6366F1",
+    border: "#6366F130",
+    glow: "#6366F120",
+  },
+  "Career Growth": {
+    bg: "#10B98112",
+    text: "#10B981",
+    border: "#10B98130",
+    glow: "#10B98120",
+  },
+  Productivity: {
+    bg: "#F59E0B12",
+    text: "#F59E0B",
+    border: "#F59E0B30",
+    glow: "#F59E0B20",
+  },
+  Mindset: {
+    bg: "#EC489912",
+    text: "#EC4899",
+    border: "#EC489930",
+    glow: "#EC489920",
+  },
+  Technology: {
+    bg: "#3B82F612",
+    text: "#3B82F6",
+    border: "#3B82F630",
+    glow: "#3B82F620",
+  },
+  Business: {
+    bg: "#8B5CF612",
+    text: "#8B5CF6",
+    border: "#8B5CF630",
+    glow: "#8B5CF620",
+  },
+  Wellness: {
+    bg: "#14B8A612",
+    text: "#14B8A6",
+    border: "#14B8A630",
+    glow: "#14B8A620",
+  },
+  Finance: {
+    bg: "#F9731612",
+    text: "#F97316",
+    border: "#F9731630",
+    glow: "#F9731620",
+  },
 };
 
 type Blog = {
@@ -551,8 +601,19 @@ type Blog = {
   status: string;
 };
 
-function CategoryBadge({ category, size = "sm" }: { category: string; size?: "sm" | "md" }) {
-  const col = CAT_COLORS[category] ?? { bg: "#64748B12", text: "#64748B", border: "#64748B30", glow: "#64748B20" };
+function CategoryBadge({
+  category,
+  size = "sm",
+}: {
+  category: string;
+  size?: "sm" | "md";
+}) {
+  const col = CAT_COLORS[category] ?? {
+    bg: "#64748B12",
+    text: "#64748B",
+    border: "#64748B30",
+    glow: "#64748B20",
+  };
   return (
     <span
       className={`inline-flex items-center rounded-lg font-black uppercase tracking-widest border ${
@@ -576,7 +637,11 @@ function BlogCard({ blog, index }: { blog: Blog; index: number }) {
       initial={{ opacity: 0, y: 40 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, scale: 0.95 }}
-      transition={{ duration: 0.5, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
+      transition={{
+        duration: 0.5,
+        delay: index * 0.08,
+        ease: [0.22, 1, 0.36, 1],
+      }}
       onHoverStart={() => setHovered(true)}
       onHoverEnd={() => setHovered(false)}
       style={{ perspective: 1000 }}
@@ -591,7 +656,11 @@ function BlogCard({ blog, index }: { blog: Blog; index: number }) {
           }}
           transition={{ duration: 0.3, ease: "easeOut" }}
           className="group flex flex-col bg-white rounded-3xl overflow-hidden border border-gray-100 h-full"
-          style={{ borderColor: hovered ? (CAT_COLORS[blog.category]?.border ?? "#e2e8f0") : "#f1f5f9" }}
+          style={{
+            borderColor: hovered
+              ? (CAT_COLORS[blog.category]?.border ?? "#e2e8f0")
+              : "#f1f5f9",
+          }}
         >
           {/* Image */}
           <div className="relative h-56 overflow-hidden bg-gradient-to-br from-gray-50 to-blue-50 flex-shrink-0">
@@ -626,7 +695,9 @@ function BlogCard({ blog, index }: { blog: Blog; index: number }) {
               animate={{ opacity: hovered ? 1 : 0, y: hovered ? 0 : 8 }}
               transition={{ duration: 0.2 }}
               className="absolute bottom-4 right-4 flex items-center gap-1.5 px-3 py-1.5 rounded-full text-white text-[11px] font-black uppercase tracking-widest"
-              style={{ background: "linear-gradient(135deg, #2563eb, #06b6d4)" }}
+              style={{
+                background: "linear-gradient(135deg, #2563eb, #06b6d4)",
+              }}
             >
               Read <ChevronRight size={11} />
             </motion.div>
@@ -712,7 +783,9 @@ function FeaturedCard({ blog }: { blog: Blog }) {
             <div className="flex items-center gap-3 mb-6">
               <span
                 className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-white text-[10px] font-black uppercase tracking-widest"
-                style={{ background: "linear-gradient(135deg, #2563eb, #06b6d4)" }}
+                style={{
+                  background: "linear-gradient(135deg, #2563eb, #06b6d4)",
+                }}
               >
                 <TrendingUp size={10} /> Featured
               </span>
@@ -747,7 +820,9 @@ function FeaturedCard({ blog }: { blog: Blog }) {
                 }}
                 transition={{ duration: 0.25 }}
                 className="ml-auto flex items-center gap-2 px-6 py-3 rounded-full text-sm font-black text-white"
-                style={{ background: "linear-gradient(135deg, #2563eb, #06b6d4)" }}
+                style={{
+                  background: "linear-gradient(135deg, #2563eb, #06b6d4)",
+                }}
               >
                 Read Article <ChevronRight size={14} />
               </motion.span>
@@ -783,7 +858,10 @@ function SkeletonCard({ delay = 0 }: { delay?: number }) {
 // ── Floating dots ────────────────────────────────────────────────────────────
 function FloatingDots() {
   return (
-    <div className="fixed inset-0 pointer-events-none overflow-hidden" style={{ zIndex: 0 }}>
+    <div
+      className="fixed inset-0 pointer-events-none overflow-hidden"
+      style={{ zIndex: 0 }}
+    >
       {Array.from({ length: 6 }).map((_, i) => (
         <motion.div
           key={i}
@@ -811,60 +889,84 @@ function FloatingDots() {
 
 // ── Main Page ────────────────────────────────────────────────────────────────
 export default function BlogsPage() {
-  const [blogs, setBlogs]                   = useState<Blog[]>([]);
-  const [loading, setLoading]               = useState(true);
-  const [search, setSearch]                 = useState("");
+  const [blogs, setBlogs] = useState<Blog[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [search, setSearch] = useState("");
   const [activeCategory, setActiveCategory] = useState("All");
-  const [page, setPage]                     = useState(1);
-  const [totalPages, setTotalPages]         = useState(1);
-  const [total, setTotal]                   = useState(0);
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const [total, setTotal] = useState(0);
   const LIMIT = 9;
 
-  const fetchBlogs = useCallback(async (p = 1, cat = activeCategory) => {
-    try {
-      setLoading(true);
-      const qs = new URLSearchParams({ status: "Published", limit: String(LIMIT), page: String(p) });
-      if (cat !== "All") qs.set("category", cat);
-      const res  = await fetch(`/api/blogs?${qs}`);
-      const data = await res.json();
-      setBlogs(data.blogs || []);
-      setTotal(data.total || 0);
-      setTotalPages(data.totalPages || 1);
-      setPage(p);
-    } catch (err) {
-      console.error(err);
-    } finally {
-      setLoading(false);
-    }
-  }, [activeCategory]);
+  const fetchBlogs = useCallback(
+    async (p = 1, cat = activeCategory) => {
+      try {
+        setLoading(true);
+        const qs = new URLSearchParams({
+          status: "Published",
+          limit: String(LIMIT),
+          page: String(p),
+        });
+        if (cat !== "All") qs.set("category", cat);
+        const res = await fetch(`/api/blogs?${qs}`);
+        const data = await res.json();
+        setBlogs(data.blogs || []);
+        setTotal(data.total || 0);
+        setTotalPages(data.totalPages || 1);
+        setPage(p);
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    },
+    [activeCategory],
+  );
 
-  useEffect(() => { fetchBlogs(1); }, [fetchBlogs]);
+  useEffect(() => {
+    fetchBlogs(1);
+  }, [fetchBlogs]);
 
-  const handleCategory = (cat: string) => { setActiveCategory(cat); fetchBlogs(1, cat); };
+  const handleCategory = (cat: string) => {
+    setActiveCategory(cat);
+    fetchBlogs(1, cat);
+  };
 
   const filtered = search
-    ? blogs.filter(b =>
-        b.title.toLowerCase().includes(search.toLowerCase()) ||
-        (b.excerpt ?? "").toLowerCase().includes(search.toLowerCase())
+    ? blogs.filter(
+        (b) =>
+          b.title.toLowerCase().includes(search.toLowerCase()) ||
+          (b.excerpt ?? "").toLowerCase().includes(search.toLowerCase()),
       )
     : blogs;
 
-  const featured = !search ? filtered[0]       : undefined;
-  const rest     = !search ? filtered.slice(1)  : filtered;
+  const featured = !search ? filtered[0] : undefined;
+  const rest = !search ? filtered.slice(1) : filtered;
 
   return (
     <div className="relative min-h-screen bg-[#f8fafc] overflow-hidden">
       <FloatingDots />
 
       {/* bg blobs */}
-      <div className="fixed top-0 left-0 w-[700px] h-[700px] rounded-full pointer-events-none"
-        style={{ background: "radial-gradient(circle at 20% 20%, #2563eb08, transparent 60%)", zIndex: 0 }} />
-      <div className="fixed bottom-0 right-0 w-[700px] h-[700px] rounded-full pointer-events-none"
-        style={{ background: "radial-gradient(circle at 80% 80%, #06b6d408, transparent 60%)", zIndex: 0 }} />
+      <div
+        className="fixed top-0 left-0 w-[700px] h-[700px] rounded-full pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(circle at 20% 20%, #2563eb08, transparent 60%)",
+          zIndex: 0,
+        }}
+      />
+      <div
+        className="fixed bottom-0 right-0 w-[700px] h-[700px] rounded-full pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(circle at 80% 80%, #06b6d408, transparent 60%)",
+          zIndex: 0,
+        }}
+      />
 
       {/* ── IMPORTANT: pt-28 pushes content below navbar ── */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-28">
-
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: -30 }}
@@ -878,9 +980,9 @@ export default function BlogsPage() {
             transition={{ delay: 0.1 }}
             className="inline-flex items-center gap-2 px-5 py-2 rounded-full text-[11px] font-extrabold tracking-widest border mb-6"
             style={{
-              background:  "linear-gradient(135deg, #2563eb12, #06b6d412)",
+              background: "linear-gradient(135deg, #2563eb12, #06b6d412)",
               borderColor: "#2563eb2e",
-              color:        "#2563eb",
+              color: "#2563eb",
             }}
           >
             <BookOpen size={13} /> INSIGHTS & ARTICLES
@@ -893,11 +995,14 @@ export default function BlogsPage() {
             className="text-5xl md:text-7xl font-black tracking-tight leading-[1.05] text-gray-900 mb-5"
           >
             Ideas That{" "}
-            <span style={{
-              background: "linear-gradient(135deg, #2563eb, #3b82f6, #06b6d4)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-            }}>
+            <span
+              style={{
+                background:
+                  "linear-gradient(135deg, #2563eb, #3b82f6, #06b6d4)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+              }}
+            >
               Move Markets
             </span>
           </motion.h1>
@@ -908,7 +1013,8 @@ export default function BlogsPage() {
             transition={{ delay: 0.3 }}
             className="text-gray-400 text-lg max-w-2xl mx-auto"
           >
-            Perspectives on leadership, growth, and the future of work from the frontlines.
+            Perspectives on leadership, growth, and the future of work from the
+            frontlines.
           </motion.p>
         </motion.div>
 
@@ -921,12 +1027,15 @@ export default function BlogsPage() {
         >
           {/* Search */}
           <div className="relative lg:w-80 flex-shrink-0">
-            <Search size={15} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-300 pointer-events-none" />
+            <Search
+              size={15}
+              className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-300 pointer-events-none"
+            />
             <input
               type="text"
               placeholder="Search articles..."
               value={search}
-              onChange={e => setSearch(e.target.value)}
+              onChange={(e) => setSearch(e.target.value)}
               className="w-full h-12 pl-11 pr-10 rounded-2xl bg-white border border-gray-200 text-gray-700 text-sm placeholder-gray-300 focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-100 transition-all shadow-sm"
             />
             <AnimatePresence>
@@ -946,7 +1055,7 @@ export default function BlogsPage() {
 
           {/* Category pills */}
           <div className="flex gap-2 overflow-x-auto pb-1 flex-nowrap flex-1">
-            {CATEGORIES.map(cat => {
+            {CATEGORIES.map((cat) => {
               const isActive = activeCategory === cat;
               return (
                 <motion.button
@@ -955,9 +1064,20 @@ export default function BlogsPage() {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.96 }}
                   className="flex-shrink-0 h-12 px-5 rounded-2xl text-[11px] font-black uppercase tracking-widest border transition-all duration-200"
-                  style={isActive
-                    ? { background: "linear-gradient(135deg, #2563eb, #06b6d4)", color: "#fff", borderColor: "transparent", boxShadow: "0 4px 16px #2563eb30" }
-                    : { background: "#fff", color: "#94a3b8", borderColor: "#e2e8f0" }
+                  style={
+                    isActive
+                      ? {
+                          background:
+                            "linear-gradient(135deg, #2563eb, #06b6d4)",
+                          color: "#fff",
+                          borderColor: "transparent",
+                          boxShadow: "0 4px 16px #2563eb30",
+                        }
+                      : {
+                          background: "#fff",
+                          color: "#94a3b8",
+                          borderColor: "#e2e8f0",
+                        }
                   }
                 >
                   {cat}
@@ -972,21 +1092,36 @@ export default function BlogsPage() {
           <div className="space-y-10">
             <div className="h-80 bg-white rounded-3xl animate-pulse border border-gray-100" />
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {Array.from({ length: 6 }).map((_, i) => <SkeletonCard key={i} delay={i * 0.05} />)}
+              {Array.from({ length: 6 }).map((_, i) => (
+                <SkeletonCard key={i} delay={i * 0.05} />
+              ))}
             </div>
           </div>
         ) : filtered.length === 0 ? (
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center py-32">
-            <div className="w-20 h-20 rounded-3xl flex items-center justify-center mx-auto mb-6 border"
-              style={{ background: "linear-gradient(135deg, #2563eb10, #06b6d410)", borderColor: "#2563eb20" }}>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="text-center py-32"
+          >
+            <div
+              className="w-20 h-20 rounded-3xl flex items-center justify-center mx-auto mb-6 border"
+              style={{
+                background: "linear-gradient(135deg, #2563eb10, #06b6d410)",
+                borderColor: "#2563eb20",
+              }}
+            >
               <BookOpen size={32} className="text-blue-300" />
             </div>
             <p className="text-gray-400 text-base mb-4">
-              {search ? `No articles matching "${search}"` : "No articles published yet."}
+              {search
+                ? `No articles matching "${search}"`
+                : "No articles published yet."}
             </p>
             {search && (
-              <button onClick={() => setSearch("")}
-                className="text-sm font-bold text-blue-500 hover:text-blue-600 underline underline-offset-4">
+              <button
+                onClick={() => setSearch("")}
+                className="text-sm font-bold text-blue-500 hover:text-blue-600 underline underline-offset-4"
+              >
                 Clear search
               </button>
             )}
@@ -1007,19 +1142,25 @@ export default function BlogsPage() {
               {/* Cards grid */}
               {rest.length > 0 && (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {rest.map((blog, i) => <BlogCard key={blog.id} blog={blog} index={i} />)}
+                  {rest.map((blog, i) => (
+                    <BlogCard key={blog.id} blog={blog} index={i} />
+                  ))}
                 </div>
               )}
 
               {/* Pagination */}
               {totalPages > 1 && !search && (
                 <motion.div
-                  initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.3 }}
                   className="flex items-center justify-center gap-4 pt-10"
                 >
                   <motion.button
-                    whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }}
-                    onClick={() => fetchBlogs(page - 1)} disabled={page <= 1}
+                    whileHover={{ scale: 1.04 }}
+                    whileTap={{ scale: 0.96 }}
+                    onClick={() => fetchBlogs(page - 1)}
+                    disabled={page <= 1}
                     className="px-7 py-3 rounded-2xl bg-white border border-gray-200 text-xs text-gray-500 hover:border-gray-300 hover:shadow-md disabled:opacity-30 disabled:cursor-not-allowed font-bold uppercase tracking-widest shadow-sm transition-all"
                   >
                     ← Previous
@@ -1028,10 +1169,14 @@ export default function BlogsPage() {
                     {page} / {totalPages}
                   </span>
                   <motion.button
-                    whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }}
-                    onClick={() => fetchBlogs(page + 1)} disabled={page >= totalPages}
+                    whileHover={{ scale: 1.04 }}
+                    whileTap={{ scale: 0.96 }}
+                    onClick={() => fetchBlogs(page + 1)}
+                    disabled={page >= totalPages}
                     className="px-7 py-3 rounded-2xl text-xs text-white font-bold uppercase tracking-widest shadow-sm disabled:opacity-30 disabled:cursor-not-allowed hover:shadow-md transition-all"
-                    style={{ background: "linear-gradient(135deg, #2563eb, #06b6d4)" }}
+                    style={{
+                      background: "linear-gradient(135deg, #2563eb, #06b6d4)",
+                    }}
                   >
                     Next →
                   </motion.button>

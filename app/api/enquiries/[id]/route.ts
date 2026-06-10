@@ -72,19 +72,6 @@
 //   }
 // }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 // app/api/enquiries/[id]/route.ts
 
 import { NextRequest, NextResponse } from "next/server";
@@ -99,7 +86,7 @@ function getAdminDb() {
         clientEmail: process.env.FIREBASE_ADMIN_CLIENT_EMAIL,
         privateKey: process.env.FIREBASE_ADMIN_PRIVATE_KEY?.replace(
           /\\n/g,
-          "\n"
+          "\n",
         ),
       }),
     });
@@ -111,7 +98,7 @@ function getAdminDb() {
 // PATCH /api/enquiries/[id]
 export async function PATCH(
   req: NextRequest,
-  { params }: { params: Promise<{ id: string }> }
+  { params }: { params: Promise<{ id: string }> },
 ) {
   try {
     const { id } = await params;
@@ -135,7 +122,7 @@ export async function PATCH(
           success: false,
           error: "No valid fields to update.",
         },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -149,7 +136,7 @@ export async function PATCH(
         id,
         updates,
       },
-      { status: 200 }
+      { status: 200 },
     );
   } catch (err: any) {
     console.error("[PATCH /api/enquiries/[id]]", err);
@@ -159,7 +146,7 @@ export async function PATCH(
         success: false,
         error: err.message,
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -167,7 +154,7 @@ export async function PATCH(
 // GET /api/enquiries/[id]
 export async function GET(
   _req: NextRequest,
-  { params }: { params: Promise<{ id: string }> }
+  { params }: { params: Promise<{ id: string }> },
 ) {
   try {
     const { id } = await params;
@@ -181,7 +168,7 @@ export async function GET(
           success: false,
           error: "Not found.",
         },
-        { status: 404 }
+        { status: 404 },
       );
     }
 
@@ -200,7 +187,7 @@ export async function GET(
         success: false,
         error: err.message,
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

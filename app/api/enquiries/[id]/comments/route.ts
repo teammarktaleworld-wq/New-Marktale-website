@@ -80,18 +80,6 @@
 //   }
 // }
 
-
-
-
-
-
-
-
-
-
-
-
-
 // app/api/enquiries/[id]/comments/route.ts
 
 import { NextRequest, NextResponse } from "next/server";
@@ -105,8 +93,10 @@ function getAdminDb() {
       credential: cert({
         projectId: process.env.FIREBASE_ADMIN_PROJECT_ID,
         clientEmail: process.env.FIREBASE_ADMIN_CLIENT_EMAIL,
-        privateKey:
-          process.env.FIREBASE_ADMIN_PRIVATE_KEY?.replace(/\\n/g, "\n"),
+        privateKey: process.env.FIREBASE_ADMIN_PRIVATE_KEY?.replace(
+          /\\n/g,
+          "\n",
+        ),
       }),
     });
   }
@@ -117,7 +107,7 @@ function getAdminDb() {
 // POST /api/enquiries/[id]/comments
 export async function POST(
   req: NextRequest,
-  { params }: { params: Promise<{ id: string }> }
+  { params }: { params: Promise<{ id: string }> },
 ) {
   try {
     const { id } = await params;
@@ -129,7 +119,7 @@ export async function POST(
           success: false,
           error: "Comment text is required.",
         },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -153,7 +143,7 @@ export async function POST(
         success: true,
         comment,
       },
-      { status: 201 }
+      { status: 201 },
     );
   } catch (err: any) {
     console.error("[POST /api/enquiries/[id]/comments]", err);
@@ -163,7 +153,7 @@ export async function POST(
         success: false,
         error: err.message,
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -171,7 +161,7 @@ export async function POST(
 // GET /api/enquiries/[id]/comments
 export async function GET(
   _req: NextRequest,
-  { params }: { params: Promise<{ id: string }> }
+  { params }: { params: Promise<{ id: string }> },
 ) {
   try {
     const { id } = await params;
@@ -185,7 +175,7 @@ export async function GET(
           success: false,
           error: "Enquiry not found.",
         },
-        { status: 404 }
+        { status: 404 },
       );
     }
 
@@ -203,7 +193,7 @@ export async function GET(
         success: false,
         error: err.message,
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

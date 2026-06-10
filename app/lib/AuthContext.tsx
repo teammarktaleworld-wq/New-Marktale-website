@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import React, { createContext, useContext, useEffect, useState } from 'react';
-import { onAuthStateChanged, User } from 'firebase/auth';
-import { auth } from '@/lib/firebase';
+import React, { createContext, useContext, useEffect, useState } from "react";
+import { onAuthStateChanged, User } from "firebase/auth";
+import { auth } from "@/lib/firebase";
 
-const ADMIN_EMAILS = ['admin@marktale.in']; // ← add your admin emails
+const ADMIN_EMAILS = ["admin@marktale.in"]; // ← add your admin emails
 
 interface AuthContextValue {
   user: User | null;
@@ -30,7 +30,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     return unsub;
   }, []);
 
-  const isAdmin = !!user && ADMIN_EMAILS.includes(user.email ?? '');
+  const isAdmin = !!user && ADMIN_EMAILS.includes(user.email ?? "");
 
   return (
     <AuthContext.Provider value={{ user, loading, isAdmin }}>

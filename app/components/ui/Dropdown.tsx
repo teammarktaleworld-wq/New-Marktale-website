@@ -8,7 +8,8 @@ export function Dropdown({ trigger, items }: any) {
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
-      if (ref.current && !ref.current.contains(e.target as Node)) setIsOpen(false);
+      if (ref.current && !ref.current.contains(e.target as Node))
+        setIsOpen(false);
     };
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
@@ -16,7 +17,10 @@ export function Dropdown({ trigger, items }: any) {
 
   return (
     <div className="relative inline-block text-left" ref={ref}>
-      <div onClick={() => setIsOpen(!isOpen)} className="cursor-pointer inline-block">
+      <div
+        onClick={() => setIsOpen(!isOpen)}
+        className="cursor-pointer inline-block"
+      >
         {trigger}
       </div>
       <AnimatePresence>
@@ -30,7 +34,10 @@ export function Dropdown({ trigger, items }: any) {
             {items.map((item: any, i: number) => (
               <button
                 key={i}
-                onClick={() => { item.onClick && item.onClick(); setIsOpen(false); }}
+                onClick={() => {
+                  item.onClick && item.onClick();
+                  setIsOpen(false);
+                }}
                 className="block w-full text-left px-4 py-2 text-sm text-[#cbd5f5] hover:bg-white/5 hover:text-white transition-colors"
               >
                 {item.label}

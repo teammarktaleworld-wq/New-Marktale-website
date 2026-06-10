@@ -1,5 +1,3 @@
-
-
 "use client";
 
 import React, { useState } from "react";
@@ -50,7 +48,9 @@ export default function HomeContactSection() {
       const data = await res.json();
 
       if (!res.ok || !data.success) {
-        throw new Error(data.error || "Something went wrong. Please try again.");
+        throw new Error(
+          data.error || "Something went wrong. Please try again.",
+        );
       }
 
       setSubmitStatus("success");
@@ -72,7 +72,7 @@ export default function HomeContactSection() {
   const handleChange = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >
+    >,
   ) => {
     setFormData({
       ...formData,
@@ -93,7 +93,12 @@ export default function HomeContactSection() {
       href: "mailto:hello@marktaleworld.com",
       color: "yellow",
     },
-    { icon: MapPin, text: "Dwarka, New Delhi Bharat", href: "#", color: "black" },
+    {
+      icon: MapPin,
+      text: "Dwarka, New Delhi Bharat",
+      href: "#",
+      color: "black",
+    },
   ];
 
   const trustStats = [
@@ -168,8 +173,8 @@ export default function HomeContactSection() {
                   stat.color === "blue"
                     ? "bg-blue-100"
                     : stat.color === "yellow"
-                    ? "bg-yellow-100"
-                    : "bg-gray-100"
+                      ? "bg-yellow-100"
+                      : "bg-gray-100"
                 } flex items-center justify-center mx-auto mb-2`}
               >
                 <stat.icon
@@ -177,8 +182,8 @@ export default function HomeContactSection() {
                     stat.color === "blue"
                       ? "text-blue-600"
                       : stat.color === "yellow"
-                      ? "text-yellow-600"
-                      : "text-black"
+                        ? "text-yellow-600"
+                        : "text-black"
                   }`}
                 />
               </div>
@@ -206,8 +211,8 @@ export default function HomeContactSection() {
                   info.color === "blue"
                     ? "bg-blue-50 border-blue-200 hover:bg-blue-100"
                     : info.color === "yellow"
-                    ? "bg-yellow-50 border-yellow-200 hover:bg-yellow-100"
-                    : "bg-gray-50 border-gray-200 hover:bg-gray-100"
+                      ? "bg-yellow-50 border-yellow-200 hover:bg-yellow-100"
+                      : "bg-gray-50 border-gray-200 hover:bg-gray-100"
                 }`}
               >
                 <div
@@ -215,8 +220,8 @@ export default function HomeContactSection() {
                     info.color === "blue"
                       ? "bg-blue-600"
                       : info.color === "yellow"
-                      ? "bg-yellow-500"
-                      : "bg-black"
+                        ? "bg-yellow-500"
+                        : "bg-black"
                   } flex items-center justify-center group-hover:scale-110 transition-transform`}
                 >
                   <info.icon className="w-4 h-4 text-white" />
@@ -226,8 +231,8 @@ export default function HomeContactSection() {
                     info.color === "blue"
                       ? "text-blue-700"
                       : info.color === "yellow"
-                      ? "text-yellow-700"
-                      : "text-gray-700"
+                        ? "text-yellow-700"
+                        : "text-gray-700"
                   }`}
                 >
                   {info.text}

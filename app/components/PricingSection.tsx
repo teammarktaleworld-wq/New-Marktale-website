@@ -114,7 +114,6 @@
 //           </p>
 //         </motion.div>
 
-        
 //         {/* Pricing Cards */}
 //         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
 //           {plans.map((plan, index) => (
@@ -137,7 +136,7 @@
 //               >
 //                 {/* Animated Background Gradient */}
 //                 <div className={`absolute inset-0 bg-gradient-to-r ${
-//                   plan.color === 'blue' 
+//                   plan.color === 'blue'
 //                     ? 'from-blue-600/0 via-blue-600/0 to-blue-600/0 group-hover:from-blue-600/5'
 //                     : 'from-yellow-500/0 via-yellow-500/0 to-yellow-500/0 group-hover:from-yellow-500/5'
 //                 } group-hover:via-transparent group-hover:to-transparent transition-all duration-500`} />
@@ -145,7 +144,7 @@
 //                 {/* Badge for Growth Plan */}
 //                 {plan.badge && (
 //                   <div className="absolute top-4 right-4 z-20">
-//                     <motion.div 
+//                     <motion.div
 //                       className="relative"
 //                       whileHover={{ scale: 1.05 }}
 //                     >
@@ -343,7 +342,7 @@
 //           <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-blue-600 to-blue-700 p-8 md:p-12 text-center shadow-2xl">
 //             <div className="absolute top-0 right-0 w-64 h-64 bg-yellow-500/20 rounded-full blur-3xl" />
 //             <div className="absolute bottom-0 left-0 w-64 h-64 bg-white/10 rounded-full blur-3xl" />
-            
+
 //             <div className="relative z-10">
 //               <motion.div
 //                 whileHover={{ scale: 1.05 }}
@@ -379,20 +378,6 @@
 //     </section>
 //   );
 // }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 "use client";
 
@@ -465,7 +450,10 @@ export default function PricingSection() {
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
 
   return (
-    <section className="relative py-24 lg:py-32 bg-white overflow-hidden" id="pricing">
+    <section
+      className="relative py-24 lg:py-32 bg-white overflow-hidden"
+      id="pricing"
+    >
       {/* Background Effects */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 left-0 w-full h-96 bg-gradient-to-b from-blue-50/30 to-transparent" />
@@ -506,7 +494,6 @@ export default function PricingSection() {
           </p>
         </motion.div>
 
-        
         {/* Pricing Cards */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
           {plans.map((plan, index) => (
@@ -518,26 +505,29 @@ export default function PricingSection() {
               transition={{ delay: index * 0.1, duration: 0.6 }}
               onMouseEnter={() => setHoveredCard(index)}
               onMouseLeave={() => setHoveredCard(null)}
-              className="group relative"
+              className="group relative h-full"
             >
               <div
-                className={`relative rounded-2xl overflow-hidden bg-white border shadow-sm hover:shadow-2xl transition-all duration-500 ${
+                className={`relative rounded-2xl overflow-hidden bg-white border shadow-sm hover:shadow-2xl transition-all duration-500 h-full ${
+                  // SAHI (space add karo h-full ke baad):
                   plan.highlighted
                     ? "border-yellow-300 shadow-xl"
                     : "border-gray-200"
                 }`}
               >
                 {/* Animated Background Gradient */}
-                <div className={`absolute inset-0 bg-gradient-to-r ${
-                  plan.color === 'blue' 
-                    ? 'from-blue-600/0 via-blue-600/0 to-blue-600/0 group-hover:from-blue-600/5'
-                    : 'from-yellow-500/0 via-yellow-500/0 to-yellow-500/0 group-hover:from-yellow-500/5'
-                } group-hover:via-transparent group-hover:to-transparent transition-all duration-500`} />
+                <div
+                  className={`absolute inset-0 bg-gradient-to-r ${
+                    plan.color === "blue"
+                      ? "from-blue-600/0 via-blue-600/0 to-blue-600/0 group-hover:from-blue-600/5"
+                      : "from-yellow-500/0 via-yellow-500/0 to-yellow-500/0 group-hover:from-yellow-500/5"
+                  } group-hover:via-transparent group-hover:to-transparent transition-all duration-500`}
+                />
 
                 {/* Badge for Growth Plan */}
                 {plan.badge && (
                   <div className="absolute top-4 right-4 z-20">
-                    <motion.div 
+                    <motion.div
                       className="relative"
                       whileHover={{ scale: 1.05 }}
                     >
@@ -549,14 +539,18 @@ export default function PricingSection() {
                   </div>
                 )}
 
-                <div className="p-8">
+                <div className="p-8 flex flex-col h-full">
                   {/* Header with Icon */}
                   <div className="flex items-center gap-4 mb-6 pb-6 border-b border-gray-100">
                     <motion.div
                       className={`p-3 rounded-xl transition-all duration-300 ${
                         hoveredCard === index
-                          ? plan.color === 'blue' ? 'bg-blue-600 shadow-lg shadow-blue-600/25' : 'bg-yellow-500 shadow-lg shadow-yellow-500/25'
-                          : plan.highlighted ? 'bg-yellow-100' : 'bg-blue-100'
+                          ? plan.color === "blue"
+                            ? "bg-blue-600 shadow-lg shadow-blue-600/25"
+                            : "bg-yellow-500 shadow-lg shadow-yellow-500/25"
+                          : plan.highlighted
+                            ? "bg-yellow-100"
+                            : "bg-blue-100"
                       }`}
                       animate={{
                         scale: hoveredCard === index ? 1.1 : 1,
@@ -567,14 +561,24 @@ export default function PricingSection() {
                       <plan.icon
                         size={24}
                         className={
-                          hoveredCard === index ? 'text-white' : plan.color === 'blue' ? 'text-blue-600' : 'text-yellow-600'
+                          hoveredCard === index
+                            ? "text-white"
+                            : plan.color === "blue"
+                              ? "text-blue-600"
+                              : "text-yellow-600"
                         }
                       />
                     </motion.div>
                     <div>
-                      <h3 className={`text-2xl font-bold text-black transition-colors duration-300 ${
-                        hoveredCard === index ? (plan.color === 'blue' ? 'text-blue-600' : 'text-yellow-600') : ''
-                      }`}>
+                      <h3
+                        className={`text-2xl font-bold text-black transition-colors duration-300 ${
+                          hoveredCard === index
+                            ? plan.color === "blue"
+                              ? "text-blue-600"
+                              : "text-yellow-600"
+                            : ""
+                        }`}
+                      >
                         {plan.name}
                       </h3>
                       <p className="text-sm text-gray-500 mt-0.5">
@@ -584,7 +588,7 @@ export default function PricingSection() {
                   </div>
 
                   {/* Features List */}
-                  <ul className="space-y-3.5 mb-8">
+                  <ul className="space-y-3.5 mb-8 flex-1">
                     {plan.features.map((feature, idx) => (
                       <motion.li
                         key={idx}
@@ -597,8 +601,12 @@ export default function PricingSection() {
                         <motion.div
                           className={`flex-shrink-0 w-5 h-5 rounded-lg flex items-center justify-center transition-all duration-300 ${
                             hoveredCard === index
-                              ? plan.color === 'blue' ? 'bg-blue-600' : 'bg-yellow-500'
-                              : plan.highlighted ? 'bg-yellow-100' : 'bg-blue-100'
+                              ? plan.color === "blue"
+                                ? "bg-blue-600"
+                                : "bg-yellow-500"
+                              : plan.highlighted
+                                ? "bg-yellow-100"
+                                : "bg-blue-100"
                           }`}
                           animate={{
                             scale: hoveredCard === index ? 1.1 : 1,
@@ -607,14 +615,22 @@ export default function PricingSection() {
                           <Check
                             size={12}
                             className={
-                              hoveredCard === index ? 'text-white' : plan.color === 'blue' ? 'text-blue-600' : 'text-yellow-600'
+                              hoveredCard === index
+                                ? "text-white"
+                                : plan.color === "blue"
+                                  ? "text-blue-600"
+                                  : "text-yellow-600"
                             }
                             strokeWidth={3}
                           />
                         </motion.div>
-                        <span className={`text-sm transition-colors duration-300 ${
-                          hoveredCard === index ? 'text-gray-900' : 'text-gray-600'
-                        }`}>
+                        <span
+                          className={`text-sm transition-colors duration-300 ${
+                            hoveredCard === index
+                              ? "text-gray-900"
+                              : "text-gray-600"
+                          }`}
+                        >
                           {feature}
                         </span>
                       </motion.li>
@@ -631,11 +647,17 @@ export default function PricingSection() {
                     transition={{ duration: 0.2 }}
                     className="mb-4"
                   >
-                    <div className={`inline-flex items-center gap-1.5 px-2 py-1 rounded-full ${
-                      plan.color === 'blue' ? 'bg-blue-50' : 'bg-yellow-50'
-                    }`}>
-                      <TrendingUp className={`w-3 h-3 ${plan.color === 'blue' ? 'text-blue-600' : 'text-yellow-600'}`} />
-                      <span className={`text-xs font-semibold ${plan.color === 'blue' ? 'text-blue-600' : 'text-yellow-600'}`}>
+                    <div
+                      className={`inline-flex items-center gap-1.5 px-2 py-1 rounded-full ${
+                        plan.color === "blue" ? "bg-blue-50" : "bg-yellow-50"
+                      }`}
+                    >
+                      <TrendingUp
+                        className={`w-3 h-3 ${plan.color === "blue" ? "text-blue-600" : "text-yellow-600"}`}
+                      />
+                      <span
+                        className={`text-xs font-semibold ${plan.color === "blue" ? "text-blue-600" : "text-yellow-600"}`}
+                      >
                         {plan.stat}
                       </span>
                     </div>
@@ -669,9 +691,11 @@ export default function PricingSection() {
                 </div>
 
                 {/* Bottom Accent Line */}
-                <div className={`absolute bottom-0 left-0 right-0 h-1 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left ${
-                  plan.color === 'blue' ? 'bg-blue-600' : 'bg-yellow-500'
-                }`} />
+                <div
+                  className={`absolute bottom-0 left-0 right-0 h-1 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left ${
+                    plan.color === "blue" ? "bg-blue-600" : "bg-yellow-500"
+                  }`}
+                />
               </div>
             </motion.div>
           ))}
@@ -709,7 +733,7 @@ export default function PricingSection() {
           <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-blue-600 to-blue-700 p-8 md:p-12 text-center shadow-2xl">
             <div className="absolute top-0 right-0 w-64 h-64 bg-yellow-500/20 rounded-full blur-3xl" />
             <div className="absolute bottom-0 left-0 w-64 h-64 bg-white/10 rounded-full blur-3xl" />
-            
+
             <div className="relative z-10">
               <motion.div
                 whileHover={{ scale: 1.05 }}
@@ -729,7 +753,10 @@ export default function PricingSection() {
                 plan for your business.
               </p>
 
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
                 <Link
                   href="/contact"
                   className="group inline-flex items-center gap-2 px-8 py-3.5 bg-white text-blue-600 font-semibold rounded-xl hover:shadow-xl transition-all duration-300"
@@ -745,4 +772,3 @@ export default function PricingSection() {
     </section>
   );
 }
-

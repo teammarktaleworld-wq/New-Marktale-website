@@ -8,10 +8,7 @@ export async function POST(req: NextRequest) {
     const file = formData.get("file") as File;
 
     if (!file) {
-      return NextResponse.json(
-        { error: "No file uploaded" },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: "No file uploaded" }, { status: 400 });
     }
 
     const bytes = await file.arrayBuffer();
@@ -22,7 +19,7 @@ export async function POST(req: NextRequest) {
       `data:${file.type};base64,${base64}`,
       {
         folder: "ascentoabacus/blogs",
-      }
+      },
     );
 
     return NextResponse.json({
@@ -33,9 +30,6 @@ export async function POST(req: NextRequest) {
   } catch (error: any) {
     console.error("Cloudinary Upload Error:", error);
 
-    return NextResponse.json(
-      { error: error.message },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }

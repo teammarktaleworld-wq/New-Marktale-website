@@ -27,9 +27,9 @@ export function Toast({ message, type = "success", isVisible, onClose }: any) {
           initial={{ opacity: 0, y: 50, scale: 0.9 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, scale: 0.9, transition: { duration: 0.2 } }}
-          className={`p-4 rounded-xl border flex items-center gap-3 shadow-xl backdrop-blur-md ${type === 'success' ? 'bg-green-500/10 border-green-500/30 text-green-400' : 'bg-red-500/10 border-red-500/30 text-red-400'}`}
+          className={`p-4 rounded-xl border flex items-center gap-3 shadow-xl backdrop-blur-md ${type === "success" ? "bg-green-500/10 border-green-500/30 text-green-400" : "bg-red-500/10 border-red-500/30 text-red-400"}`}
         >
-          <span>{type === 'success' ? '✓' : '✕'}</span>
+          <span>{type === "success" ? "✓" : "✕"}</span>
           <span className="text-sm font-medium text-white">{message}</span>
         </motion.div>
       )}
