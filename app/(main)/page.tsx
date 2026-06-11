@@ -19,7 +19,6 @@ import HomeContactSection from "../components/HomeContactSection";
 import CreativeShowcase from "../components/CreativeShowcase";
 
 export default async function Home() {
-
   return (
     <main className="min-h-screen bg-white">
       <HeroSection />

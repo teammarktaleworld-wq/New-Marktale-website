@@ -5,22 +5,22 @@ import TeamCTA from "../../components/TeamCTA";
 import TeamCulture from "../../components/about/TeamCulture";
 
 export default function AboutPage() {
-    return (
-        <main className="min-h-screen bg-white">
-            {/* Manifesto / Hero - The Hook */}
-            <Manifesto />
+  return (
+    <main className="min-h-screen bg-white">
+      {/* Manifesto / Hero - The Hook */}
+      <Manifesto />
 
-            {/* The Methodology - Grid */}
-            <PhilosophyGrid />
+      {/* The Methodology - Grid */}
+      <PhilosophyGrid />
 
-            {/* Team Culture */}
-            <TeamCulture />
+      {/* Team Culture */}
+      <TeamCulture />
 
-            {/* The Visionary - Editorial Quote */}
-            <FounderQuote />
+      {/* The Visionary - Editorial Quote */}
+      <FounderQuote />
 
-            {/* Team Call to Action - Keeping this as it fits the bold vibe */}
-            <TeamCTA />
-        </main>
-    );
+      {/* Team Call to Action - Keeping this as it fits the bold vibe */}
+      <TeamCTA />
+    </main>
+  );
 }

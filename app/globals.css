@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  --color-kestone-red: #0287E7;
+  --color-kestone-red: #0287e7;
   --color-kestone-black: #000000;
   --color-kestone-gray: #212529;
 
@@ -69,7 +69,6 @@ body {
 }
 
 @keyframes bounce {
-
   0%,
   100% {
     transform: translateY(0);
@@ -81,7 +80,6 @@ body {
 }
 
 @keyframes wave {
-
   0%,
   100% {
     transform: rotate(-5deg);
@@ -93,7 +91,6 @@ body {
 }
 
 @keyframes pulse {
-
   0%,
   100% {
     transform: scale(1);
@@ -107,7 +104,6 @@ body {
 }
 
 @keyframes float {
-
   0%,
   100% {
     transform: translateY(0px);
@@ -143,45 +139,49 @@ body {
 }
 
 .animate-scroll {
-  animation: scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite;
+  animation: scroll var(--animation-duration, 40s)
+    var(--animation-direction, forwards) linear infinite;
 }
 
 /* Add to your global CSS file for custom animations and styles */
 
 @keyframes subtlePulse {
-    0%, 100% {
-        opacity: 0.6;
-    }
-    50% {
-        opacity: 1;
-    }
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
 }
 
 .animate-subtle-pulse {
-    animation: subtlePulse 3s ease-in-out infinite;
+  animation: subtlePulse 3s ease-in-out infinite;
 }
 
 /* Gradient text utility */
 .bg-gradient-text {
-    background: linear-gradient(135deg, #ea580c 0%, #dc2626 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+  background: linear-gradient(135deg, #ea580c 0%, #dc2626 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 /* Indian market specific hover effects */
 .hover-lift {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .hover-lift:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 20px 25px -12px rgba(0, 0, 0, 0.1);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 25px -12px rgba(0, 0, 0, 0.1);
 }
 
 /* Responsive adjustments for Indian mobile-first approach */
 @media (max-width: 768px) {
-    .mobile-friendly-text {
-        font-size: clamp(1.5rem, 5vw, 2.5rem);
-    }
+  .mobile-friendly-text {
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+  }
 }

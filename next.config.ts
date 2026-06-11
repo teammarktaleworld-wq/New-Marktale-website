@@ -29,13 +29,6 @@
 
 // export default nextConfig;
 
-
-
-
-
-
-
-
 // import type { NextConfig } from "next";
 
 // const nextConfig: NextConfig = {
@@ -72,16 +65,6 @@
 
 // export default nextConfig;
 
-
-
-
-
-
-
-
-
-
-
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
@@ -117,7 +100,7 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "**",
       },
-    
+
       // Firebase Storage images
       {
         protocol: "https",

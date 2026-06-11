@@ -26,7 +26,7 @@ import {
 } from "lucide-react";
 
 const workItems = [
-    {
+  {
     id: "mentorleap",
     title: "MentorLeap",
     category: "EdTech",
@@ -122,7 +122,7 @@ const workItems = [
 const categories = [
   "All",
   "Featured",
-  "EdTech",        // ← add this
+  "EdTech", // ← add this
   "Hospitality",
   "Transportation",
   "E-commerce",

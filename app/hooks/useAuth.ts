@@ -1,19 +1,19 @@
 // hooks/useAuth.ts
 
-import { useEffect, useState } from 'react';
-import { onAuthStateChanged, User } from 'firebase/auth';
-import { auth } from '@/lib/firebase';
-import { syncUserDocument, UserDocument } from '@/lib/userService';
+import { useEffect, useState } from "react";
+import { onAuthStateChanged, User } from "firebase/auth";
+import { auth } from "@/lib/firebase";
+import { syncUserDocument, UserDocument } from "@/lib/userService";
 
 interface AuthState {
-  user:       User | null;
-  userDoc:    UserDocument | null;   // full Firestore document
-  loading:    boolean;
-  isAdmin:    boolean;
+  user: User | null;
+  userDoc: UserDocument | null; // full Firestore document
+  loading: boolean;
+  isAdmin: boolean;
 }
 
 export function useAuth(): AuthState {
-  const [user,    setUser]    = useState<User | null>(null);
+  const [user, setUser] = useState<User | null>(null);
   const [userDoc, setUserDoc] = useState<UserDocument | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -38,6 +38,6 @@ export function useAuth(): AuthState {
     user,
     userDoc,
     loading,
-    isAdmin: userDoc?.role === 'admin',
+    isAdmin: userDoc?.role === "admin",
   };
 }

@@ -20,7 +20,7 @@ export default function SuccessOverlay({
   title,
   message,
   ctaText,
-  onCtaClick
+  onCtaClick,
 }: SuccessOverlayProps) {
   useEffect(() => {
     if (isOpen) {
@@ -28,9 +28,10 @@ export default function SuccessOverlay({
       const animationEnd = Date.now() + duration;
       const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
 
-      const randomInRange = (min: number, max: number) => Math.random() * (max - min) + min;
+      const randomInRange = (min: number, max: number) =>
+        Math.random() * (max - min) + min;
 
-      const interval: any = setInterval(function() {
+      const interval: any = setInterval(function () {
         const timeLeft = animationEnd - Date.now();
 
         if (timeLeft <= 0) {
@@ -38,8 +39,16 @@ export default function SuccessOverlay({
         }
 
         const particleCount = 50 * (timeLeft / duration);
-        confetti({ ...defaults, particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } });
-        confetti({ ...defaults, particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } });
+        confetti({
+          ...defaults,
+          particleCount,
+          origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 },
+        });
+        confetti({
+          ...defaults,
+          particleCount,
+          origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 },
+        });
       }, 250);
 
       return () => clearInterval(interval);
@@ -102,11 +111,15 @@ export default function SuccessOverlay({
               className="flex flex-col sm:flex-row gap-4 justify-center items-center"
             >
               {ctaText && onCtaClick && (
-                <Button 
+                <Button
                   onClick={onCtaClick}
                   className="px-10 h-14 rounded-full font-black uppercase tracking-widest bg-white text-[#020617] hover:bg-[#00e5ff] hover:text-white transition-all shadow-xl group"
                 >
-                  {ctaText} <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={18} />
+                  {ctaText}{" "}
+                  <ArrowRight
+                    className="ml-2 group-hover:translate-x-1 transition-transform"
+                    size={18}
+                  />
                 </Button>
               )}
               <button
@@ -119,7 +132,9 @@ export default function SuccessOverlay({
 
             <div className="mt-12 flex items-center justify-center gap-2 text-[#475569]">
               <CheckCircle2 size={14} className="text-[#00e5ff]" />
-              <span className="text-[10px] font-black uppercase tracking-widest">Enrolled Successfully • MentorLeap AI</span>
+              <span className="text-[10px] font-black uppercase tracking-widest">
+                Enrolled Successfully • MentorLeap AI
+              </span>
             </div>
           </motion.div>
         </div>

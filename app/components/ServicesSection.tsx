@@ -129,7 +129,10 @@ export default function ServicesSection() {
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
 
   return (
-    <section className="relative py-24 lg:py-32 bg-white overflow-hidden" id="services">
+    <section
+      className="relative py-24 lg:py-32 bg-white overflow-hidden"
+      id="services"
+    >
       {/* Background Effects */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 left-0 w-full h-96 bg-gradient-to-b from-blue-50/30 to-transparent" />
@@ -188,35 +191,47 @@ export default function ServicesSection() {
               className="group relative bg-white border border-gray-200 rounded-2xl shadow-sm hover:shadow-2xl transition-all duration-500 overflow-hidden cursor-pointer"
             >
               {/* Animated Background Gradient */}
-              <div className={`absolute inset-0 bg-gradient-to-r ${
-                service.color === 'blue' ? 'from-blue-600/0 via-blue-600/0 to-blue-600/0 group-hover:from-blue-600/5' :
-                service.color === 'yellow' ? 'from-yellow-500/0 via-yellow-500/0 to-yellow-500/0 group-hover:from-yellow-500/5' :
-                'from-black/0 via-black/0 to-black/0 group-hover:from-black/5'
-              } group-hover:via-transparent group-hover:to-transparent transition-all duration-500`} />
+              <div
+                className={`absolute inset-0 bg-gradient-to-r ${
+                  service.color === "blue"
+                    ? "from-blue-600/0 via-blue-600/0 to-blue-600/0 group-hover:from-blue-600/5"
+                    : service.color === "yellow"
+                      ? "from-yellow-500/0 via-yellow-500/0 to-yellow-500/0 group-hover:from-yellow-500/5"
+                      : "from-black/0 via-black/0 to-black/0 group-hover:from-black/5"
+                } group-hover:via-transparent group-hover:to-transparent transition-all duration-500`}
+              />
 
               {/* Badge */}
-              <motion.div 
+              <motion.div
                 className="absolute top-4 right-4 z-10"
                 initial={{ x: 20, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: index * 0.05 }}
               >
-                <span className={`px-2.5 py-1 text-xs font-bold rounded-full ${
-                  service.color === 'blue' ? 'bg-blue-100 text-blue-700' :
-                  service.color === 'yellow' ? 'bg-yellow-100 text-yellow-700' :
-                  'bg-gray-100 text-gray-700'
-                }`}>
+                <span
+                  className={`px-2.5 py-1 text-xs font-bold rounded-full ${
+                    service.color === "blue"
+                      ? "bg-blue-100 text-blue-700"
+                      : service.color === "yellow"
+                        ? "bg-yellow-100 text-yellow-700"
+                        : "bg-gray-100 text-gray-700"
+                  }`}
+                >
                   {service.badge}
                 </span>
               </motion.div>
 
               {/* Icon Container */}
               <div className="p-6 pb-0">
-                <motion.div 
+                <motion.div
                   className={`w-16 h-16 rounded-2xl flex items-center justify-center transition-all duration-300 ${
-                    hoveredCard === index 
-                      ? service.color === 'blue' ? 'bg-blue-600' : service.color === 'yellow' ? 'bg-yellow-500' : 'bg-black'
-                      : 'bg-gray-100'
+                    hoveredCard === index
+                      ? service.color === "blue"
+                        ? "bg-blue-600"
+                        : service.color === "yellow"
+                          ? "bg-yellow-500"
+                          : "bg-black"
+                      : "bg-gray-100"
                   }`}
                   animate={{
                     scale: hoveredCard === index ? 1.1 : 1,
@@ -224,17 +239,27 @@ export default function ServicesSection() {
                   }}
                   transition={{ duration: 0.3 }}
                 >
-                  <service.icon className={`w-8 h-8 transition-colors duration-300 ${
-                    hoveredCard === index ? 'text-white' : service.color === 'blue' ? 'text-blue-600' : service.color === 'yellow' ? 'text-yellow-600' : 'text-black'
-                  }`} />
+                  <service.icon
+                    className={`w-8 h-8 transition-colors duration-300 ${
+                      hoveredCard === index
+                        ? "text-white"
+                        : service.color === "blue"
+                          ? "text-blue-600"
+                          : service.color === "yellow"
+                            ? "text-yellow-600"
+                            : "text-black"
+                    }`}
+                  />
                 </motion.div>
               </div>
 
               {/* Content */}
               <div className="p-6">
-                <h3 className={`text-xl font-bold text-black mb-3 transition-colors duration-300 ${
-                  hoveredCard === index ? 'text-blue-600' : ''
-                }`}>
+                <h3
+                  className={`text-xl font-bold text-black mb-3 transition-colors duration-300 ${
+                    hoveredCard === index ? "text-blue-600" : ""
+                  }`}
+                >
                   {service.title}
                 </h3>
 
@@ -254,7 +279,9 @@ export default function ServicesSection() {
                 >
                   <div className="inline-flex items-center gap-1.5 px-2 py-1 rounded-full bg-green-50">
                     <TrendingUp className="w-3 h-3 text-green-600" />
-                    <span className="text-xs font-semibold text-green-600">{service.stat}</span>
+                    <span className="text-xs font-semibold text-green-600">
+                      {service.stat}
+                    </span>
                   </div>
                 </motion.div>
 
@@ -268,7 +295,14 @@ export default function ServicesSection() {
                   <Link
                     href="/services"
                     className="inline-flex items-center gap-2 font-semibold text-sm uppercase tracking-wider transition-all group-hover:gap-3"
-                    style={{ color: service.color === 'blue' ? '#2563EB' : service.color === 'yellow' ? '#EAB308' : '#000000' }}
+                    style={{
+                      color:
+                        service.color === "blue"
+                          ? "#2563EB"
+                          : service.color === "yellow"
+                            ? "#EAB308"
+                            : "#000000",
+                    }}
                   >
                     Learn More
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -277,9 +311,15 @@ export default function ServicesSection() {
               </div>
 
               {/* Bottom Accent Line */}
-              <div className={`absolute bottom-0 left-0 right-0 h-1 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left ${
-                service.color === 'blue' ? 'bg-blue-600' : service.color === 'yellow' ? 'bg-yellow-500' : 'bg-black'
-              }`} />
+              <div
+                className={`absolute bottom-0 left-0 right-0 h-1 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left ${
+                  service.color === "blue"
+                    ? "bg-blue-600"
+                    : service.color === "yellow"
+                      ? "bg-yellow-500"
+                      : "bg-black"
+                }`}
+              />
             </motion.div>
           ))}
         </motion.div>
@@ -304,12 +344,24 @@ export default function ServicesSection() {
               whileHover={{ y: -5, scale: 1.05 }}
               className="flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 rounded-full shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer"
             >
-              <div className={`w-6 h-6 rounded-full ${
-                badge.color === 'blue' ? 'bg-blue-100' : badge.color === 'yellow' ? 'bg-yellow-100' : 'bg-gray-100'
-              } flex items-center justify-center`}>
-                <badge.icon className={`w-3.5 h-3.5 ${
-                  badge.color === 'blue' ? 'text-blue-600' : badge.color === 'yellow' ? 'text-yellow-600' : 'text-black'
-                }`} />
+              <div
+                className={`w-6 h-6 rounded-full ${
+                  badge.color === "blue"
+                    ? "bg-blue-100"
+                    : badge.color === "yellow"
+                      ? "bg-yellow-100"
+                      : "bg-gray-100"
+                } flex items-center justify-center`}
+              >
+                <badge.icon
+                  className={`w-3.5 h-3.5 ${
+                    badge.color === "blue"
+                      ? "text-blue-600"
+                      : badge.color === "yellow"
+                        ? "text-yellow-600"
+                        : "text-black"
+                  }`}
+                />
               </div>
               <span className="text-xs md:text-sm font-semibold text-gray-700">
                 {badge.label}
@@ -329,7 +381,7 @@ export default function ServicesSection() {
           <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-blue-600 to-blue-700 p-8 md:p-12 text-center">
             <div className="absolute top-0 right-0 w-64 h-64 bg-yellow-500/20 rounded-full blur-3xl" />
             <div className="absolute bottom-0 left-0 w-64 h-64 bg-white/10 rounded-full blur-3xl" />
-            
+
             <div className="relative z-10">
               <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">
                 Ready to scale your business?
@@ -337,7 +389,10 @@ export default function ServicesSection() {
               <p className="text-blue-100 mb-6 max-w-xl mx-auto">
                 Let's create a custom growth strategy tailored to your brand.
               </p>
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
                 <Link
                   href="/contact"
                   className="inline-flex items-center gap-2 px-6 py-3 bg-white text-blue-600 font-semibold rounded-xl hover:shadow-lg transition-all"

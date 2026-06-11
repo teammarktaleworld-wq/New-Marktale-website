@@ -15,9 +15,12 @@ function getAdminDb() {
   if (!getApps().length) {
     initializeApp({
       credential: cert({
-        projectId:   process.env.FIREBASE_ADMIN_PROJECT_ID,
+        projectId: process.env.FIREBASE_ADMIN_PROJECT_ID,
         clientEmail: process.env.FIREBASE_ADMIN_CLIENT_EMAIL,
-        privateKey:  process.env.FIREBASE_ADMIN_PRIVATE_KEY?.replace(/\\n/g, "\n"),
+        privateKey: process.env.FIREBASE_ADMIN_PRIVATE_KEY?.replace(
+          /\\n/g,
+          "\n",
+        ),
       }),
     });
   }
@@ -27,8 +30,8 @@ function getAdminDb() {
 // ─── Nodemailer ───────────────────────────────────────────────────────────────
 function getTransporter() {
   return nodemailer.createTransport({
-    host:   process.env.SMTP_HOST,
-    port:   Number(process.env.SMTP_PORT),
+    host: process.env.SMTP_HOST,
+    port: Number(process.env.SMTP_PORT),
     secure: true,
     auth: {
       user: process.env.SMTP_USER,
@@ -38,8 +41,8 @@ function getTransporter() {
 }
 
 // ─── Types ────────────────────────────────────────────────────────────────────
-export type EnquiryStatus  = "New" | "Replied" | "Archived";
-export type ContactStatus  =
+export type EnquiryStatus = "New" | "Replied" | "Archived";
+export type ContactStatus =
   | "Not Contacted"
   | "Enquired"
   | "Pending"
@@ -47,53 +50,59 @@ export type ContactStatus  =
   | "Closed";
 
 export interface Comment {
-  id:        string;
-  text:      string;
-  author:    string;
+  id: string;
+  text: string;
+  author: string;
   createdAt: string; // ISO string
 }
 
 export interface Enquiry {
-  id:            string;  // Firestore doc id
-  name:          string;
-  phone:         string;
-  email:         string;
-  service:       string;
-  message:       string;
-  source:        string;  // "Contact Form" | "Email" | "Social" …
-  status:        EnquiryStatus;
+  id: string; // Firestore doc id
+  name: string;
+  phone: string;
+  email: string;
+  service: string;
+  message: string;
+  source: string; // "Contact Form" | "Email" | "Social" …
+  status: EnquiryStatus;
   contactStatus: ContactStatus;
-  comments:      Comment[];
-  createdAt:     string;  // ISO string
-  updatedAt:     string;  // ISO string
+  comments: Comment[];
+  createdAt: string; // ISO string
+  updatedAt: string; // ISO string
 }
 
 // ─── Helper: serialize Firestore doc ─────────────────────────────────────────
-function serializeDoc(id: string, data: FirebaseFirestore.DocumentData): Enquiry {
+function serializeDoc(
+  id: string,
+  data: FirebaseFirestore.DocumentData,
+): Enquiry {
   return {
     id,
-    name:          data.name          ?? "",
-    phone:         data.phone         ?? "",
-    email:         data.email         ?? "",
-    service:       data.service       ?? "Not specified",
-    message:       data.message       ?? "",
-    source:        data.source        ?? "Contact Form",
-    status:        data.status        ?? "New",
+    name: data.name ?? "",
+    phone: data.phone ?? "",
+    email: data.email ?? "",
+    service: data.service ?? "Not specified",
+    message: data.message ?? "",
+    source: data.source ?? "Contact Form",
+    status: data.status ?? "New",
     contactStatus: data.contactStatus ?? "Not Contacted",
-    comments:      (data.comments     ?? []).map((c: any) => ({
-      id:        c.id        ?? "",
-      text:      c.text      ?? "",
-      author:    c.author    ?? "Admin",
-      createdAt: c.createdAt instanceof Timestamp
-        ? c.createdAt.toDate().toISOString()
-        : (c.createdAt ?? new Date().toISOString()),
+    comments: (data.comments ?? []).map((c: any) => ({
+      id: c.id ?? "",
+      text: c.text ?? "",
+      author: c.author ?? "Admin",
+      createdAt:
+        c.createdAt instanceof Timestamp
+          ? c.createdAt.toDate().toISOString()
+          : (c.createdAt ?? new Date().toISOString()),
     })),
-    createdAt: data.createdAt instanceof Timestamp
-      ? data.createdAt.toDate().toISOString()
-      : (data.createdAt ?? new Date().toISOString()),
-    updatedAt: data.updatedAt instanceof Timestamp
-      ? data.updatedAt.toDate().toISOString()
-      : (data.updatedAt ?? new Date().toISOString()),
+    createdAt:
+      data.createdAt instanceof Timestamp
+        ? data.createdAt.toDate().toISOString()
+        : (data.createdAt ?? new Date().toISOString()),
+    updatedAt:
+      data.updatedAt instanceof Timestamp
+        ? data.updatedAt.toDate().toISOString()
+        : (data.updatedAt ?? new Date().toISOString()),
   };
 }
 
@@ -107,14 +116,15 @@ function serializeDoc(id: string, data: FirebaseFirestore.DocumentData): Enquiry
 // ═════════════════════════════════════════════════════════════════════════════
 export async function GET(req: NextRequest) {
   try {
-    const db     = getAdminDb();
+    const db = getAdminDb();
     const params = req.nextUrl.searchParams;
 
-    const statusFilter        = params.get("status");
+    const statusFilter = params.get("status");
     const contactStatusFilter = params.get("contactStatus");
-    const limitParam          = Number(params.get("limit") ?? 50);
+    const limitParam = Number(params.get("limit") ?? 50);
 
-    let query: FirebaseFirestore.Query = db.collection("enquiries")
+    let query: FirebaseFirestore.Query = db
+      .collection("enquiries")
       .orderBy("createdAt", "desc")
       .limit(limitParam);
 
@@ -131,7 +141,10 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ success: true, enquiries }, { status: 200 });
   } catch (err: any) {
     console.error("[GET /api/enquiries]", err);
-    return NextResponse.json({ success: false, error: err.message }, { status: 500 });
+    return NextResponse.json(
+      { success: false, error: err.message },
+      { status: 500 },
+    );
   }
 }
 
@@ -142,12 +155,19 @@ export async function GET(req: NextRequest) {
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { name, phone, email, service, message, source = "Contact Form" } = body;
+    const {
+      name,
+      phone,
+      email,
+      service,
+      message,
+      source = "Contact Form",
+    } = body;
 
     if (!name || !phone || !email) {
       return NextResponse.json(
         { success: false, error: "name, phone and email are required." },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -156,25 +176,25 @@ export async function POST(req: NextRequest) {
       name,
       phone,
       email,
-      service:       service || "Not specified",
-      message:       message || "",
+      service: service || "Not specified",
+      message: message || "",
       source,
-      status:        "New"           as EnquiryStatus,
+      status: "New" as EnquiryStatus,
       contactStatus: "Not Contacted" as ContactStatus,
-      comments:      [],
-      createdAt:     now,
-      updatedAt:     now,
+      comments: [],
+      createdAt: now,
+      updatedAt: now,
     };
 
     // 1. Save to Firestore
-    const db     = getAdminDb();
+    const db = getAdminDb();
     const docRef = await db.collection("enquiries").add(enquiry);
 
     // 2. Email to team
     const transporter = getTransporter();
     await transporter.sendMail({
-      from:    `"MarkTale Website" <${process.env.SMTP_USER}>`,
-      to:      "hello@marktaleworld.com",
+      from: `"MarkTale Website" <${process.env.SMTP_USER}>`,
+      to: "hello@marktaleworld.com",
       subject: `New Enquiry from ${name} — ${service}`,
       html: `
         <div style="font-family:Arial,sans-serif;max-width:600px;margin:auto;border:1px solid #e5e5e5;border-radius:8px;overflow:hidden;">
@@ -195,8 +215,8 @@ export async function POST(req: NextRequest) {
 
     // 3. Confirmation email to customer
     await transporter.sendMail({
-      from:    `"MarkTale World" <${process.env.SMTP_USER}>`,
-      to:      email,
+      from: `"MarkTale World" <${process.env.SMTP_USER}>`,
+      to: email,
       subject: "We received your enquiry — MarkTale World",
       html: `
         <div style="font-family:Arial,sans-serif;max-width:600px;margin:auto;border:1px solid #e5e5e5;border-radius:8px;overflow:hidden;">
@@ -213,6 +233,9 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ success: true, id: docRef.id }, { status: 200 });
   } catch (err: any) {
     console.error("[POST /api/enquiries]", err);
-    return NextResponse.json({ success: false, error: err.message }, { status: 500 });
+    return NextResponse.json(
+      { success: false, error: err.message },
+      { status: 500 },
+    );
   }
 }

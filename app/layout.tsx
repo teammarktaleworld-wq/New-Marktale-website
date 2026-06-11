@@ -1,6 +1,5 @@
 // //app/layout
 
-
 // import type { Metadata } from "next";
 // import { Montserrat, Roboto } from "next/font/google";
 // import "./globals.css";
@@ -48,7 +47,6 @@
 //         <Footer />
 //       </body> */}
 
-
 //       <body
 //         className={`${montserrat.variable} ${roboto.variable} antialiased font-body overflow-x-hidden flex flex-col min-h-screen`}
 //       >
@@ -61,12 +59,6 @@
 //     </html>
 //   );
 // }
-
-
-
-
-
-
 
 import type { Metadata } from "next";
 import { Montserrat, Roboto } from "next/font/google";
@@ -88,7 +80,8 @@ const roboto = Roboto({
 
 export const metadata: Metadata = {
   title: "MarkTale | AI Powered Marketing Agency",
-  description: "An advertising company helping brands succeed in both traditional and digital marketing.",
+  description:
+    "An advertising company helping brands succeed in both traditional and digital marketing.",
   icons: {
     icon: "/images/logo.png",
   },

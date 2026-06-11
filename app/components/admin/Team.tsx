@@ -211,15 +211,6 @@
 //   );
 // }
 
-
-
-
-
-
-
-
-
-
 "use client";
 
 import { useState, useRef } from "react";
@@ -250,7 +241,12 @@ type TeamProps = {
 function TeamModal({ member, onSave, onClose }: TeamModalProps) {
   const [form, setForm] = useState<Omit<TeamMember, "id">>(
     member
-      ? { name: member.name, role: member.role, email: member.email, avatar: member.avatar }
+      ? {
+          name: member.name,
+          role: member.role,
+          email: member.email,
+          avatar: member.avatar,
+        }
       : { name: "", role: "", email: "", avatar: "" },
   );
 
@@ -293,7 +289,14 @@ function TeamModal({ member, onSave, onClose }: TeamModalProps) {
             maxLength={2}
           />
         </div>
-        <div style={{ display: "flex", gap: 10, justifyContent: "flex-end", marginTop: 8 }}>
+        <div
+          style={{
+            display: "flex",
+            gap: 10,
+            justifyContent: "flex-end",
+            marginTop: 8,
+          }}
+        >
           <button style={S.btn("ghost")} onClick={onClose}>
             Cancel
           </button>
@@ -319,13 +322,18 @@ export default function Team({
 }: TeamProps) {
   const [team, setTeam] = useState<TeamMember[]>(initialTeam);
   const [modal, setModal] = useState<TeamMember | "add" | null>(null);
-  const [confirm, setConfirm] = useState<{ id: number; message: string } | null>(null);
+  const [confirm, setConfirm] = useState<{
+    id: number;
+    message: string;
+  } | null>(null);
   const nextId = useRef(team.length + 10);
 
   const handleSave = (form: Omit<TeamMember, "id">) => {
     let newTeam: TeamMember[];
     if (modal && modal !== "add") {
-      newTeam = team.map((m) => (m.id === (modal as TeamMember).id ? { ...m, ...form } : m));
+      newTeam = team.map((m) =>
+        m.id === (modal as TeamMember).id ? { ...m, ...form } : m,
+      );
     } else {
       newTeam = [...team, { ...form, id: nextId.current++ }];
     }
@@ -343,7 +351,14 @@ export default function Team({
 
   return (
     <div>
-      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 24 }}>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          marginBottom: 24,
+        }}
+      >
         <div>
           <div style={S.sectionTitle}>Team Members</div>
           <div style={S.sectionSub}>{team.length} members in your team.</div>
@@ -353,19 +368,57 @@ export default function Team({
         </button>
       </div>
 
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: 16 }}>
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
+          gap: 16,
+        }}
+      >
         {team.map((m, i) => (
-          <div key={m.id} style={{ ...S.card, padding: "20px", display: "flex", flexDirection: "column", gap: 14 }}>
+          <div
+            key={m.id}
+            style={{
+              ...S.card,
+              padding: "20px",
+              display: "flex",
+              flexDirection: "column",
+              gap: 14,
+            }}
+          >
             <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
-              <div style={{ ...S.avatar(AVATAR_COLORS[i % AVATAR_COLORS.length]), width: 48, height: 48, fontSize: 14 }}>
+              <div
+                style={{
+                  ...S.avatar(AVATAR_COLORS[i % AVATAR_COLORS.length]),
+                  width: 48,
+                  height: 48,
+                  fontSize: 14,
+                }}
+              >
                 {m.avatar}
               </div>
               <div>
-                <div style={{ fontWeight: 600, color: "#F1F5F9", fontSize: 15 }}>{m.name}</div>
-                <div style={{ fontSize: 12, color: "#64748B", marginTop: 2 }}>{m.role}</div>
+                <div
+                  style={{ fontWeight: 600, color: "#F1F5F9", fontSize: 15 }}
+                >
+                  {m.name}
+                </div>
+                <div style={{ fontSize: 12, color: "#64748B", marginTop: 2 }}>
+                  {m.role}
+                </div>
               </div>
             </div>
-            <div style={{ fontSize: 12, color: "#475569", borderTop: "1px solid #1A1A1A", paddingTop: 12, display: "flex", alignItems: "center", gap: 6 }}>
+            <div
+              style={{
+                fontSize: 12,
+                color: "#475569",
+                borderTop: "1px solid #1A1A1A",
+                paddingTop: 12,
+                display: "flex",
+                alignItems: "center",
+                gap: 6,
+              }}
+            >
               <Icons.Mail /> {m.email}
             </div>
             <div style={{ display: "flex", gap: 8 }}>
@@ -374,7 +427,12 @@ export default function Team({
               </button>
               <button
                 style={S.btn("danger")}
-                onClick={() => setConfirm({ id: m.id, message: `Remove "${m.name}" from the team?` })}
+                onClick={() =>
+                  setConfirm({
+                    id: m.id,
+                    message: `Remove "${m.name}" from the team?`,
+                  })
+                }
               >
                 <Icons.Delete /> Remove
               </button>

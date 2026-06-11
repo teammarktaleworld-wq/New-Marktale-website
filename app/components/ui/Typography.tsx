@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 
-export function SectionHeading({ children, className = '' }: any) {
+export function SectionHeading({ children, className = "" }: any) {
   return (
     <h2
       className={`text-white font-bold mb-4 ${className}`}
@@ -13,20 +13,25 @@ export function SectionHeading({ children, className = '' }: any) {
 
 export function GradientText({ children }: any) {
   return (
-    <span style={{
-      background: 'linear-gradient(90deg, #00e5ff, #6366f1)',
-      WebkitBackgroundClip: 'text',
-      WebkitTextFillColor: 'transparent',
-      backgroundClip: 'text',
-    }}>
+    <span
+      style={{
+        background: "linear-gradient(90deg, #00e5ff, #6366f1)",
+        WebkitBackgroundClip: "text",
+        WebkitTextFillColor: "transparent",
+        backgroundClip: "text",
+      }}
+    >
       {children}
     </span>
   );
 }
 
-export function Paragraph({ children, className = '' }: any) {
+export function Paragraph({ children, className = "" }: any) {
   return (
-    <p className={`mb-6 ${className}`} style={{ color: "#cbd5f5", fontSize: "16px", lineHeight: "1.7" }}>
+    <p
+      className={`mb-6 ${className}`}
+      style={{ color: "#cbd5f5", fontSize: "16px", lineHeight: "1.7" }}
+    >
       {children}
     </p>
   );

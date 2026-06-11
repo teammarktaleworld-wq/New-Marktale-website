@@ -1,13 +1,17 @@
 "use client";
-import React from 'react';
-import { motion, useInView } from 'framer-motion';
+import React from "react";
+import { motion, useInView } from "framer-motion";
 
-export function Reveal({ children, delay = 0, style, className='' }: any) {
+export function Reveal({ children, delay = 0, style, className = "" }: any) {
   const ref = React.useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
 
   return (
-    <div ref={ref} style={{overflow: 'hidden', ...style}} className={className}>
+    <div
+      ref={ref}
+      style={{ overflow: "hidden", ...style }}
+      className={className}
+    >
       <motion.div
         initial={{ y: 50, opacity: 0 }}
         animate={isInView ? { y: 0, opacity: 1 } : { y: 50, opacity: 0 }}
@@ -19,7 +23,7 @@ export function Reveal({ children, delay = 0, style, className='' }: any) {
   );
 }
 
-export function FadeIn({ children, delay = 0, className='' }: any) {
+export function FadeIn({ children, delay = 0, className = "" }: any) {
   const ref = React.useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
 

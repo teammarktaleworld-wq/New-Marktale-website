@@ -1,4 +1,3 @@
-
 // //admin/dashboard/[tab]/page.tsx
 
 // "use client";
@@ -100,20 +99,6 @@
 //   );
 // }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // "use client";
 
 // import { useEffect, useCallback, useState } from "react";
@@ -172,17 +157,6 @@
 //   );
 // }
 
-
-
-
-
-
-
-
-
-
-
-
 "use client";
 
 import { useParams } from "next/navigation";
@@ -210,9 +184,5 @@ export default function AdminDashboardPage() {
 
   const tab = (params?.tab as string) || "dashboard";
 
-  return (
-    <div className="p-6">
-      {renderPage(tab)}
-    </div>
-  );
+  return <div className="p-6">{renderPage(tab)}</div>;
 }

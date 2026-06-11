@@ -259,11 +259,11 @@
 //   useEffect(() => {
 //     if (!mounted) return;
 //     if (!isAutoPlaying) return;
-    
+
 //     const timer = setInterval(() => {
 //       nextCard();
 //     }, 5000);
-    
+
 //     return () => clearInterval(timer);
 //   }, [isAutoPlaying, mounted, centerIndex]);
 
@@ -566,18 +566,6 @@
 //     </div>
 //   );
 // }
-
-
-
-
-
-
-
-
-
-
-
-
 
 // "use client";
 
@@ -1241,23 +1229,6 @@
 //     </div>
 //   );
 // }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // "use client";
 
@@ -1979,18 +1950,6 @@
 //   );
 // }
 
-
-
-
-
-
-
-
-
-
-
-
-
 // "use client";
 
 // import React, { useState, useEffect, useRef, useCallback } from "react";
@@ -2696,20 +2655,6 @@
 //   );
 // }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // "use client";
 
 // import React, { useState, useEffect, useRef, useCallback } from "react";
@@ -3272,16 +3217,6 @@
 //     </div>
 //   );
 // }
-
-
-
-
-
-
-
-
-
-
 
 // "use client";
 
@@ -3904,21 +3839,6 @@
 //   );
 // }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // "use client";
 
 // import React, { useState, useEffect, useRef, useCallback } from "react";
@@ -4531,11 +4451,6 @@
 //   );
 // }
 
-
-
-
-
-
 "use client";
 
 import React, { useState, useEffect, useRef, useCallback } from "react";
@@ -4592,7 +4507,8 @@ const colorSchemes: Record<string, ColorScheme> = {
     title: "Dominate the",
     highlight: "Digital Frontier",
     subtitle: "Where vision meets velocity",
-    description: "We transform ambitious ideas into market-leading brands. Strategic storytelling meets data-driven growth.",
+    description:
+      "We transform ambitious ideas into market-leading brands. Strategic storytelling meets data-driven growth.",
     ctaPrimary: "Launch Vision",
     ctaSecondary: "Explore Strategy",
     gradFrom: "#2563eb",
@@ -4605,7 +4521,8 @@ const colorSchemes: Record<string, ColorScheme> = {
     title: "Break the",
     highlight: "Status Quo",
     subtitle: "Bold moves create bold empires",
-    description: "Disruptive strategies for founders who dare to be different. Bold colors, bolder results.",
+    description:
+      "Disruptive strategies for founders who dare to be different. Bold colors, bolder results.",
     ctaPrimary: "Start Rebellion",
     ctaSecondary: "Read Manifesto",
     gradFrom: "#eab308",
@@ -4620,7 +4537,8 @@ const founderData: FounderData[] = [
     id: 1,
     name: "Kautilya Kalyan",
     title: "Founder & CEO",
-    quote: "Great brands aren't built in comfort zones. They're forged in decisive action.",
+    quote:
+      "Great brands aren't built in comfort zones. They're forged in decisive action.",
     image: "/founder/founderimage.jpeg",
     video: "/founder/foundervideo.mp4",
     video2: "/founder/foundervideo2.mp4",
@@ -4635,8 +4553,9 @@ const founderData: FounderData[] = [
     id: 2,
     name: "Kautilya Kalyan",
     title: "Chief Disruptor",
-    quote: "The biggest risk is playing it safe. Disrupt or be disrupted — there's no middle ground.",
-    image: "/founder/founderimage.png",
+    quote:
+      "The biggest risk is playing it safe. Disrupt or be disrupted — there's no middle ground.",
+    image: "/founder/founderimage.jpeg",
     video: "/founder/foundervideo.mp4",
     video2: "/founder/foundervideo2.mp4",
     colorScheme: colorSchemes.yellow,
@@ -4650,8 +4569,13 @@ const founderData: FounderData[] = [
 
 // ─── Per-slide unique text (6 slides total) ───────────────────────────────────────
 const slideTextData: {
-  tagline: string; heading: string; highlight: string;
-  subtitle: string; description: string; ctaPrimary: string; ctaSecondary: string;
+  tagline: string;
+  heading: string;
+  highlight: string;
+  subtitle: string;
+  description: string;
+  ctaPrimary: string;
+  ctaSecondary: string;
 }[] = [
   // Slide 0 — Founder 1 Photo
   {
@@ -4659,7 +4583,8 @@ const slideTextData: {
     heading: "Dominate the",
     highlight: "Digital Frontier",
     subtitle: "Where vision meets velocity",
-    description: "We transform ambitious ideas into market-leading brands. Strategic storytelling meets data-driven growth.",
+    description:
+      "We transform ambitious ideas into market-leading brands. Strategic storytelling meets data-driven growth.",
     ctaPrimary: "Launch Vision",
     ctaSecondary: "Explore Strategy",
   },
@@ -4669,7 +4594,8 @@ const slideTextData: {
     heading: "Build a",
     highlight: "Legacy Brand",
     subtitle: "Data-driven storytelling at scale",
-    description: "From strategy to execution — we architect brands that don't just compete, they redefine the market entirely.",
+    description:
+      "From strategy to execution — we architect brands that don't just compete, they redefine the market entirely.",
     ctaPrimary: "Start Building",
     ctaSecondary: "View Our Work",
   },
@@ -4679,7 +4605,8 @@ const slideTextData: {
     heading: "Scale Beyond",
     highlight: "Your Limits",
     subtitle: "Proven systems for 10× growth",
-    description: "150+ brands scaled. 98% success rate. We don't follow trends — we create them with precision and purpose.",
+    description:
+      "150+ brands scaled. 98% success rate. We don't follow trends — we create them with precision and purpose.",
     ctaPrimary: "Let's Scale",
     ctaSecondary: "See Results",
   },
@@ -4689,7 +4616,8 @@ const slideTextData: {
     heading: "Break the",
     highlight: "Status Quo",
     subtitle: "Bold moves create bold empires",
-    description: "Disruptive strategies for founders who dare to be different. Bold colors, bolder results.",
+    description:
+      "Disruptive strategies for founders who dare to be different. Bold colors, bolder results.",
     ctaPrimary: "Start Rebellion",
     ctaSecondary: "Read Manifesto",
   },
@@ -4699,7 +4627,8 @@ const slideTextData: {
     heading: "Disrupt or",
     highlight: "Be Disrupted",
     subtitle: "No middle ground. Only momentum.",
-    description: "200+ campaigns. 15× average ROI. We engineer market disruptions that competitors scramble to understand.",
+    description:
+      "200+ campaigns. 15× average ROI. We engineer market disruptions that competitors scramble to understand.",
     ctaPrimary: "Disrupt Now",
     ctaSecondary: "Our Strategy",
   },
@@ -4709,7 +4638,8 @@ const slideTextData: {
     heading: "Win the",
     highlight: "Market Game",
     subtitle: "45+ industry awards and counting",
-    description: "Recognition follows results. From global campaigns to hyper-local execution — we turn bold ideas into market domination.",
+    description:
+      "Recognition follows results. From global campaigns to hyper-local execution — we turn bold ideas into market domination.",
     ctaPrimary: "Claim Victory",
     ctaSecondary: "View Awards",
   },
@@ -4725,24 +4655,33 @@ const allSlides: Slide[] = founderData.flatMap((f, fi) =>
       founderIndex: fi,
       ...slideTextData[si],
     };
-  })
+  }),
 );
 const TOTAL = allSlides.length; // 6
 const IMAGE_HOLD_MS = 2500;
 
 // ─── VideoProgress ────────────────────────────────────────────────────────────────
-const VideoProgress = ({ videoRef }: { videoRef: React.RefObject<HTMLVideoElement | null> }) => {
+const VideoProgress = ({
+  videoRef,
+}: {
+  videoRef: React.RefObject<HTMLVideoElement | null>;
+}) => {
   const [pct, setPct] = useState(0);
   useEffect(() => {
     const v = videoRef.current;
     if (!v) return;
-    const tick = () => { if (v.duration) setPct((v.currentTime / v.duration) * 100); };
+    const tick = () => {
+      if (v.duration) setPct((v.currentTime / v.duration) * 100);
+    };
     v.addEventListener("timeupdate", tick);
     return () => v.removeEventListener("timeupdate", tick);
   }, [videoRef]);
   return (
     <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-white/20 z-20">
-      <div className="h-full bg-white/85 transition-none" style={{ width: `${pct}%` }} />
+      <div
+        className="h-full bg-white/85 transition-none"
+        style={{ width: `${pct}%` }}
+      />
     </div>
   );
 };
@@ -4751,7 +4690,9 @@ const VideoProgress = ({ videoRef }: { videoRef: React.RefObject<HTMLVideoElemen
 const LiveBadge = ({ label }: { label: string }) => (
   <div className="absolute top-3 right-3 z-20 flex items-center gap-1 px-2 py-0.5 bg-black/55 backdrop-blur-sm rounded-full">
     <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
-    <span className="text-white text-[9px] font-bold tracking-widest">{label}</span>
+    <span className="text-white text-[9px] font-bold tracking-widest">
+      {label}
+    </span>
   </div>
 );
 
@@ -4772,9 +4713,21 @@ const Particles = ({ color }: { color: string }) => {
           key={i}
           className="absolute w-1 h-1 rounded-full"
           style={{ background: color }}
-          initial={{ x: Math.random() * dims.w, y: Math.random() * dims.h, opacity: 0 }}
-          animate={{ y: [null, -140], opacity: [0, 0.55, 0], scale: [0, 1.6, 0] }}
-          transition={{ duration: 3.5 + Math.random() * 2.5, repeat: Infinity, delay: Math.random() * 7 }}
+          initial={{
+            x: Math.random() * dims.w,
+            y: Math.random() * dims.h,
+            opacity: 0,
+          }}
+          animate={{
+            y: [null, -140],
+            opacity: [0, 0.55, 0],
+            scale: [0, 1.6, 0],
+          }}
+          transition={{
+            duration: 3.5 + Math.random() * 2.5,
+            repeat: Infinity,
+            delay: Math.random() * 7,
+          }}
         />
       ))}
     </div>
@@ -4795,14 +4748,14 @@ const SlideCard = ({
   onMediaEnd,
 }: {
   slideIdx: number;
-  domPosition: number;  // 0=left, 1=center, 2=right
+  domPosition: number; // 0=left, 1=center, 2=right
   centerIdx: number;
   onMediaEnd: () => void;
 }) => {
   const isCenter = domPosition === 1;
-  const slide    = allSlides[slideIdx];
-  const founder  = founderData[slide.founderIndex];
-  const s        = founder.colorScheme;
+  const slide = allSlides[slideIdx];
+  const founder = founderData[slide.founderIndex];
+  const s = founder.colorScheme;
 
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -4810,19 +4763,28 @@ const SlideCard = ({
   const [hovered, setHovered] = useState(false);
 
   useEffect(() => {
-    if (timerRef.current) { clearTimeout(timerRef.current); timerRef.current = null; }
+    if (timerRef.current) {
+      clearTimeout(timerRef.current);
+      timerRef.current = null;
+    }
     firedRef.current = false;
 
     const v = videoRef.current;
 
     if (!isCenter) {
-      if (v) { v.pause(); v.currentTime = 0; }
+      if (v) {
+        v.pause();
+        v.currentTime = 0;
+      }
       return;
     }
 
     if (slide.mediaType === "image") {
       timerRef.current = setTimeout(() => {
-        if (!firedRef.current) { firedRef.current = true; onMediaEnd(); }
+        if (!firedRef.current) {
+          firedRef.current = true;
+          onMediaEnd();
+        }
       }, IMAGE_HOLD_MS);
     } else {
       if (v) {
@@ -4832,23 +4794,32 @@ const SlideCard = ({
           p.catch(() => {
             // Autoplay blocked — advance after fallback delay
             timerRef.current = setTimeout(() => {
-              if (!firedRef.current) { firedRef.current = true; onMediaEnd(); }
+              if (!firedRef.current) {
+                firedRef.current = true;
+                onMediaEnd();
+              }
             }, 5000);
           });
         }
       }
     }
 
-    return () => { if (timerRef.current) clearTimeout(timerRef.current); };
-  // centerIdx ensures this fires on every advance even when domPosition=1 stays center
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    return () => {
+      if (timerRef.current) clearTimeout(timerRef.current);
+    };
+    // centerIdx ensures this fires on every advance even when domPosition=1 stays center
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [centerIdx, isCenter]);
 
   const handleVideoEnd = useCallback(() => {
-    if (isCenter && !firedRef.current) { firedRef.current = true; onMediaEnd(); }
+    if (isCenter && !firedRef.current) {
+      firedRef.current = true;
+      onMediaEnd();
+    }
   }, [isCenter, onMediaEnd]);
 
-  const videoSrc   = slide.mediaType === "video2" ? founder.video2 : founder.video;
+  const videoSrc =
+    slide.mediaType === "video2" ? founder.video2 : founder.video;
   const videoLabel = slide.mediaType === "video2" ? "2 / 2" : "1 / 2";
 
   return (
@@ -4864,19 +4835,22 @@ const SlideCard = ({
       {isCenter && (
         <motion.div
           className="absolute -inset-[3px] rounded-[22px] blur-sm pointer-events-none"
-          style={{ background: `linear-gradient(135deg, ${s.gradFrom}, ${s.gradTo})` }}
+          style={{
+            background: `linear-gradient(135deg, ${s.gradFrom}, ${s.gradTo})`,
+          }}
           animate={{ opacity: [0.2, 0.45, 0.2] }}
           transition={{ duration: 3, repeat: Infinity }}
         />
       )}
 
-      <div className={[
-        "relative rounded-2xl overflow-hidden shadow-2xl",
-        isCenter
-          ? "w-[185px] h-[310px] sm:w-[215px] sm:h-[360px] md:w-[255px] md:h-[420px] lg:w-[275px] lg:h-[455px]"
-          : "w-[125px] h-[235px] sm:w-[148px] sm:h-[275px] md:w-[178px] md:h-[322px] lg:w-[195px] lg:h-[354px]",
-      ].join(" ")}>
-
+      <div
+        className={[
+          "relative rounded-2xl overflow-hidden shadow-2xl",
+          isCenter
+            ? "w-[185px] h-[310px] sm:w-[215px] sm:h-[360px] md:w-[255px] md:h-[420px] lg:w-[275px] lg:h-[455px]"
+            : "w-[125px] h-[235px] sm:w-[148px] sm:h-[275px] md:w-[178px] md:h-[322px] lg:w-[195px] lg:h-[354px]",
+        ].join(" ")}
+      >
         {/* Image */}
         {slide.mediaType === "image" && (
           <>
@@ -4896,7 +4870,10 @@ const SlideCard = ({
                   className="h-full bg-white/85"
                   initial={{ scaleX: 0 }}
                   animate={{ scaleX: 1 }}
-                  transition={{ duration: IMAGE_HOLD_MS / 1000, ease: "linear" }}
+                  transition={{
+                    duration: IMAGE_HOLD_MS / 1000,
+                    ease: "linear",
+                  }}
                   style={{ transformOrigin: "left" }}
                 />
               </div>
@@ -4928,9 +4905,14 @@ const SlideCard = ({
           animate={{ y: hovered ? -8 : 0 }}
           transition={{ duration: 0.26 }}
         >
-          <motion.div className="flex items-center gap-1.5 mb-0.5" animate={{ x: hovered ? 4 : 0 }}>
+          <motion.div
+            className="flex items-center gap-1.5 mb-0.5"
+            animate={{ x: hovered ? 4 : 0 }}
+          >
             <div className="w-4 h-px bg-white/70" />
-            <span className="text-[8px] font-bold tracking-[0.2em] uppercase opacity-75">Founder</span>
+            <span className="text-[8px] font-bold tracking-[0.2em] uppercase opacity-75">
+              Founder
+            </span>
           </motion.div>
           <motion.h3
             className="text-xs sm:text-sm md:text-base font-bold leading-tight"
@@ -4953,7 +4935,7 @@ const SlideCard = ({
 // ─── Main ────────────────────────────────────────────────────────────────────────
 export default function ModernHeroSection() {
   const [centerIdx, setCenterIdx] = useState(0);
-  const [mounted,   setMounted]   = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -4963,23 +4945,26 @@ export default function ModernHeroSection() {
     setMounted(true);
   }, []);
 
-  const currentSlide   = allSlides[centerIdx];
+  const currentSlide = allSlides[centerIdx];
   const currentFounder = founderData[currentSlide.founderIndex];
-  const s              = currentFounder.colorScheme;
+  const s = currentFounder.colorScheme;
 
   // FIX 1: textKey = centerIdx → text animates on EVERY card change, not just founder change
   const textKey = centerIdx;
 
   // FIX 2: arrow buttons advance 1 slide at a time (not full founder jump)
-  const goNext      = useCallback(() => setCenterIdx((p) => (p + 1) % TOTAL), []);
-  const goPrev      = useCallback(() => setCenterIdx((p) => (p - 1 + TOTAL) % TOTAL), []);
+  const goNext = useCallback(() => setCenterIdx((p) => (p + 1) % TOTAL), []);
+  const goPrev = useCallback(
+    () => setCenterIdx((p) => (p - 1 + TOTAL) % TOTAL),
+    [],
+  );
   const goToFounder = useCallback((fi: number) => setCenterIdx(fi * 3), []);
 
   const handleMediaEnd = useCallback(() => {
     setCenterIdx((p) => (p + 1) % TOTAL);
   }, []);
 
-  const leftIdx  = (centerIdx - 1 + TOTAL) % TOTAL;
+  const leftIdx = (centerIdx - 1 + TOTAL) % TOTAL;
   const rightIdx = (centerIdx + 1) % TOTAL;
 
   if (!mounted) {
@@ -4992,26 +4977,33 @@ export default function ModernHeroSection() {
 
   return (
     <div className="relative min-h-screen w-full bg-white overflow-hidden">
-
       <AnimatePresence mode="wait">
         <motion.div
           key={`bg-${currentSlide.founderIndex}`}
           className="absolute inset-0 pointer-events-none"
-          style={{ background: `radial-gradient(ellipse 80% 60% at 70% 40%, ${s.gradFrom}0a, transparent 70%)` }}
-          initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+          style={{
+            background: `radial-gradient(ellipse 80% 60% at 70% 40%, ${s.gradFrom}0a, transparent 70%)`,
+          }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
           transition={{ duration: 0.9 }}
         />
       </AnimatePresence>
 
       <motion.div
         className="absolute top-0 -left-28 w-[480px] h-[480px] rounded-full blur-[90px] pointer-events-none"
-        style={{ background: `radial-gradient(circle, ${s.gradFrom}13, transparent)` }}
+        style={{
+          background: `radial-gradient(circle, ${s.gradFrom}13, transparent)`,
+        }}
         animate={{ x: [0, 26, 0], y: [0, 16, 0] }}
         transition={{ duration: 10, repeat: Infinity }}
       />
       <motion.div
         className="absolute -bottom-24 -right-24 w-[560px] h-[560px] rounded-full blur-[100px] pointer-events-none"
-        style={{ background: `radial-gradient(circle, ${s.gradTo}10, transparent)` }}
+        style={{
+          background: `radial-gradient(circle, ${s.gradTo}10, transparent)`,
+        }}
         animate={{ x: [0, -22, 0], y: [0, -14, 0] }}
         transition={{ duration: 13, repeat: Infinity }}
       />
@@ -5021,7 +5013,6 @@ export default function ModernHeroSection() {
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl pt-20 sm:pt-24 lg:pt-28 pb-10">
         <div className="min-h-[calc(100vh-80px)] flex items-center">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 xl:gap-20 items-center w-full">
-
             {/* ── LEFT: text — keyed to centerIdx so it re-animates on every slide ── */}
             <AnimatePresence mode="wait">
               <motion.div
@@ -5034,37 +5025,59 @@ export default function ModernHeroSection() {
               >
                 {/* Tagline */}
                 <motion.span
-                  initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.05 }}
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.05 }}
                   className="inline-block px-3 py-1 rounded-full text-[10px] sm:text-[11px] font-extrabold tracking-widest border"
-                  style={{ background: `linear-gradient(135deg, ${s.gradFrom}12, ${s.gradTo}12)`, borderColor: `${s.gradFrom}2e`, color: s.gradFrom }}
+                  style={{
+                    background: `linear-gradient(135deg, ${s.gradFrom}12, ${s.gradTo}12)`,
+                    borderColor: `${s.gradFrom}2e`,
+                    color: s.gradFrom,
+                  }}
                 >
                   {currentSlide.tagline}
                 </motion.span>
 
                 {/* Heading */}
                 <motion.h1
-                  initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1 }}
                   className="text-[clamp(1.9rem,5vw,3.7rem)] font-black leading-[1.12] tracking-tight"
                 >
                   <span className="text-gray-900">{currentSlide.heading}</span>
                   <br />
-                  <span style={{ background: `linear-gradient(135deg, ${s.gradFrom}, ${s.gradMid}, ${s.gradTo})`, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+                  <span
+                    style={{
+                      background: `linear-gradient(135deg, ${s.gradFrom}, ${s.gradMid}, ${s.gradTo})`,
+                      WebkitBackgroundClip: "text",
+                      WebkitTextFillColor: "transparent",
+                    }}
+                  >
                     {currentSlide.highlight}
                   </span>
                 </motion.h1>
 
                 {/* Subtitle */}
                 <motion.p
-                  initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.15 }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.15 }}
                   className="text-sm sm:text-base md:text-lg font-semibold"
-                  style={{ background: `linear-gradient(135deg, ${s.gradFrom}, ${s.gradTo})`, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}
+                  style={{
+                    background: `linear-gradient(135deg, ${s.gradFrom}, ${s.gradTo})`,
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                  }}
                 >
                   {currentSlide.subtitle}
                 </motion.p>
 
                 {/* Description */}
                 <motion.p
-                  initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.19 }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.19 }}
                   className="text-gray-500 text-sm leading-relaxed max-w-[420px]"
                 >
                   {currentSlide.description}
@@ -5072,38 +5085,76 @@ export default function ModernHeroSection() {
 
                 {/* Stats */}
                 <motion.div
-                  initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.23 }}
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.23 }}
                   className="flex gap-6 sm:gap-10 pt-1"
                 >
                   {currentFounder.stats.map((stat, i) => (
-                    <motion.div key={i} whileHover={{ y: -4 }} transition={{ duration: 0.18 }}>
-                      <p className="text-2xl sm:text-3xl font-black" style={{ background: `linear-gradient(135deg, ${s.gradFrom}, ${s.gradTo})`, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+                    <motion.div
+                      key={i}
+                      whileHover={{ y: -4 }}
+                      transition={{ duration: 0.18 }}
+                    >
+                      <p
+                        className="text-2xl sm:text-3xl font-black"
+                        style={{
+                          background: `linear-gradient(135deg, ${s.gradFrom}, ${s.gradTo})`,
+                          WebkitBackgroundClip: "text",
+                          WebkitTextFillColor: "transparent",
+                        }}
+                      >
                         {stat.value}
                       </p>
-                      <p className="text-[9px] sm:text-[10px] text-gray-400 uppercase tracking-widest mt-0.5">{stat.label}</p>
+                      <p className="text-[9px] sm:text-[10px] text-gray-400 uppercase tracking-widest mt-0.5">
+                        {stat.label}
+                      </p>
                     </motion.div>
                   ))}
                 </motion.div>
 
                 {/* CTAs */}
                 <motion.div
-                  initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.27 }}
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.27 }}
                   className="flex flex-wrap gap-3 pt-1"
                 >
-                  <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
+                  <motion.div
+                    whileHover={{ scale: 1.03 }}
+                    whileTap={{ scale: 0.97 }}
+                  >
                     <Link
                       href="/contact"
                       className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-white text-sm font-semibold shadow-md hover:shadow-lg transition-shadow"
-                      style={{ background: `linear-gradient(135deg, ${s.gradFrom}, ${s.gradTo})` }}
+                      style={{
+                        background: `linear-gradient(135deg, ${s.gradFrom}, ${s.gradTo})`,
+                      }}
                     >
                       {currentSlide.ctaPrimary}
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      <svg
+                        className="w-4 h-4"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M9 5l7 7-7 7"
+                        />
                       </svg>
                     </Link>
                   </motion.div>
-                  <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
-                    <Link href="/work" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white border border-gray-200 text-gray-700 text-sm font-semibold shadow-sm hover:shadow-md transition-shadow">
+                  <motion.div
+                    whileHover={{ scale: 1.03 }}
+                    whileTap={{ scale: 0.97 }}
+                  >
+                    <Link
+                      href="/work"
+                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white border border-gray-200 text-gray-700 text-sm font-semibold shadow-sm hover:shadow-md transition-shadow"
+                    >
                       {currentSlide.ctaSecondary}
                     </Link>
                   </motion.div>
@@ -5111,20 +5162,35 @@ export default function ModernHeroSection() {
 
                 {/* Quote */}
                 <motion.div
-                  initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.32 }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.32 }}
                   className="pt-4 border-t border-gray-100"
                 >
                   <div className="flex items-start gap-3">
-                    <div className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style={{ background: `linear-gradient(135deg, ${s.gradFrom}, ${s.gradTo})` }}>
-                      <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
+                    <div
+                      className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
+                      style={{
+                        background: `linear-gradient(135deg, ${s.gradFrom}, ${s.gradTo})`,
+                      }}
+                    >
+                      <svg
+                        className="w-4 h-4 text-white"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                      >
                         <path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179zM14.583 17.321C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179z" />
                       </svg>
                     </div>
                     <div>
-                      <p className="text-gray-500 text-xs italic leading-relaxed">"{currentFounder.quote}"</p>
+                      <p className="text-gray-500 text-xs italic leading-relaxed">
+                        "{currentFounder.quote}"
+                      </p>
                       <p className="text-gray-800 text-xs font-semibold mt-1.5">
                         {currentFounder.name}
-                        <span className="text-gray-400 font-normal ml-1.5">— {currentFounder.title}</span>
+                        <span className="text-gray-400 font-normal ml-1.5">
+                          — {currentFounder.title}
+                        </span>
                       </p>
                     </div>
                   </div>
@@ -5134,19 +5200,23 @@ export default function ModernHeroSection() {
 
             {/* ── RIGHT: carousel ── */}
             <motion.div
-              initial={{ opacity: 0, x: 26 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }}
+              initial={{ opacity: 0, x: 26 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
               className="order-1 lg:order-2"
             >
               <div className="flex items-end justify-center gap-2 sm:gap-3 md:gap-4">
-                {([leftIdx, centerIdx, rightIdx] as const).map((slideIdx, domPos) => (
-                  <SlideCard
-                    key={domPos}           // stable key — never causes remount
-                    slideIdx={slideIdx}    // changes as carousel advances
-                    domPosition={domPos}   // 1 = center
-                    centerIdx={centerIdx}  // triggers play/pause re-evaluation
-                    onMediaEnd={handleMediaEnd}
-                  />
-                ))}
+                {([leftIdx, centerIdx, rightIdx] as const).map(
+                  (slideIdx, domPos) => (
+                    <SlideCard
+                      key={domPos} // stable key — never causes remount
+                      slideIdx={slideIdx} // changes as carousel advances
+                      domPosition={domPos} // 1 = center
+                      centerIdx={centerIdx} // triggers play/pause re-evaluation
+                      onMediaEnd={handleMediaEnd}
+                    />
+                  ),
+                )}
               </div>
 
               {/* Nav — arrows = 1 slide, dots = jump to founder */}
@@ -5156,8 +5226,18 @@ export default function ModernHeroSection() {
                   aria-label="Previous slide"
                   className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white shadow border border-gray-100 flex items-center justify-center hover:shadow-md transition-shadow active:scale-95"
                 >
-                  <svg className="w-3.5 h-3.5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                  <svg
+                    className="w-3.5 h-3.5 text-gray-500"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M15 19l-7-7 7-7"
+                    />
                   </svg>
                 </button>
 
@@ -5170,7 +5250,13 @@ export default function ModernHeroSection() {
                         onClick={() => goToFounder(i)}
                         aria-label={founder.name}
                         className="rounded-full transition-all duration-300"
-                        style={{ width: isActive ? 24 : 8, height: 8, background: isActive ? founder.colorScheme.gradFrom : "#d1d5db" }}
+                        style={{
+                          width: isActive ? 24 : 8,
+                          height: 8,
+                          background: isActive
+                            ? founder.colorScheme.gradFrom
+                            : "#d1d5db",
+                        }}
                       />
                     );
                   })}
@@ -5181,8 +5267,18 @@ export default function ModernHeroSection() {
                   aria-label="Next slide"
                   className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white shadow border border-gray-100 flex items-center justify-center hover:shadow-md transition-shadow active:scale-95"
                 >
-                  <svg className="w-3.5 h-3.5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  <svg
+                    className="w-3.5 h-3.5 text-gray-500"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 5l7 7-7 7"
+                    />
                   </svg>
                 </button>
               </div>
@@ -5195,14 +5291,23 @@ export default function ModernHeroSection() {
                   return (
                     <button
                       key={i}
-                      onClick={() => setCenterIdx(currentSlide.founderIndex * 3 + i)}
+                      onClick={() =>
+                        setCenterIdx(currentSlide.founderIndex * 3 + i)
+                      }
                       className="flex items-center gap-1.5"
                     >
                       <div
                         className="rounded-full transition-all duration-300"
-                        style={{ width: isActiveSlot ? 16 : 8, height: 8, background: isActiveSlot ? s.gradFrom : "#d1d5db" }}
+                        style={{
+                          width: isActiveSlot ? 16 : 8,
+                          height: 8,
+                          background: isActiveSlot ? s.gradFrom : "#d1d5db",
+                        }}
                       />
-                      <span className="text-[10px] transition-colors duration-200" style={{ color: isActiveSlot ? s.gradFrom : "#9ca3af" }}>
+                      <span
+                        className="text-[10px] transition-colors duration-200"
+                        style={{ color: isActiveSlot ? s.gradFrom : "#9ca3af" }}
+                      >
                         {label}
                       </span>
                     </button>
@@ -5210,12 +5315,9 @@ export default function ModernHeroSection() {
                 })}
               </div>
             </motion.div>
-
           </div>
         </div>
       </div>
     </div>
   );
-
 }
-

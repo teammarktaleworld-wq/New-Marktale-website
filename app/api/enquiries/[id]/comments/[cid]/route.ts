@@ -52,16 +52,6 @@
 //   }
 // }
 
-
-
-
-
-
-
-
-
-
-
 // app/api/enquiries/[id]/comments/[cid]/route.ts
 // DELETE /api/enquiries/[id]/comments/[cid]
 
@@ -77,7 +67,7 @@ function getAdminDb() {
         clientEmail: process.env.FIREBASE_ADMIN_CLIENT_EMAIL,
         privateKey: process.env.FIREBASE_ADMIN_PRIVATE_KEY?.replace(
           /\\n/g,
-          "\n"
+          "\n",
         ),
       }),
     });
@@ -88,7 +78,7 @@ function getAdminDb() {
 
 export async function DELETE(
   _req: NextRequest,
-  { params }: { params: Promise<{ id: string; cid: string }> }
+  { params }: { params: Promise<{ id: string; cid: string }> },
 ) {
   try {
     const { id, cid } = await params;
@@ -103,7 +93,7 @@ export async function DELETE(
           success: false,
           error: "Enquiry not found.",
         },
-        { status: 404 }
+        { status: 404 },
       );
     }
 
@@ -117,7 +107,7 @@ export async function DELETE(
           success: false,
           error: "Comment not found.",
         },
-        { status: 404 }
+        { status: 404 },
       );
     }
 
@@ -131,20 +121,17 @@ export async function DELETE(
         success: true,
         deletedId: cid,
       },
-      { status: 200 }
+      { status: 200 },
     );
   } catch (err: any) {
-    console.error(
-      "[DELETE /api/enquiries/[id]/comments/[cid]]",
-      err
-    );
+    console.error("[DELETE /api/enquiries/[id]/comments/[cid]]", err);
 
     return NextResponse.json(
       {
         success: false,
         error: err.message,
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

@@ -1,9 +1,3 @@
-
-
-
-
-
-
 // app/api/blogs/route.ts
 import { NextRequest, NextResponse } from "next/server";
 import { db } from "@/lib/firebase";
@@ -21,14 +15,6 @@ import {
 } from "firebase/firestore";
 
 // GET /api/blogs
-
-
-
-
-
-
-
-
 
 export async function GET(req: NextRequest) {
   try {
@@ -51,7 +37,7 @@ export async function GET(req: NextRequest) {
     console.log("Fetching blogs from Firestore...");
 
     const snap = await getDocs(
-      query(collection(db, "blogs"), orderBy("createdAt", "desc"))
+      query(collection(db, "blogs"), orderBy("createdAt", "desc")),
     );
 
     console.log("Total Firestore Docs:", snap.size);
@@ -60,11 +46,9 @@ export async function GET(req: NextRequest) {
       id: d.id,
       ...(d.data() as any),
       createdAt:
-        d.data().createdAt?.toDate?.()?.toISOString() ??
-        d.data().createdAt,
+        d.data().createdAt?.toDate?.()?.toISOString() ?? d.data().createdAt,
       updatedAt:
-        d.data().updatedAt?.toDate?.()?.toISOString() ??
-        d.data().updatedAt,
+        d.data().updatedAt?.toDate?.()?.toISOString() ?? d.data().updatedAt,
     }));
 
     console.log("Mapped Docs:", allDocs.length);
@@ -76,7 +60,7 @@ export async function GET(req: NextRequest) {
         id: b.id,
         title: b.title,
         status: b.status,
-      }))
+      })),
     );
 
     // STATUS FILTER
@@ -84,12 +68,12 @@ export async function GET(req: NextRequest) {
       console.log("Applying Status Filter:", status);
 
       allDocs = allDocs.filter((b) => {
-        const blogStatus = String(b.status || "").trim().toLowerCase();
+        const blogStatus = String(b.status || "")
+          .trim()
+          .toLowerCase();
         const requestedStatus = status.trim().toLowerCase();
 
-        console.log(
-          `Comparing: "${blogStatus}" === "${requestedStatus}"`
-        );
+        console.log(`Comparing: "${blogStatus}" === "${requestedStatus}"`);
 
         return blogStatus === requestedStatus;
       });
@@ -102,8 +86,7 @@ export async function GET(req: NextRequest) {
       console.log("Applying Category Filter:", category);
 
       allDocs = allDocs.filter(
-        (b) =>
-          String(b.category || "").trim() === category.trim()
+        (b) => String(b.category || "").trim() === category.trim(),
       );
 
       console.log("After Category Filter:", allDocs.length);
@@ -127,7 +110,7 @@ export async function GET(req: NextRequest) {
         id: b.id,
         title: b.title,
         status: b.status,
-      }))
+      })),
     );
 
     console.log("========== BLOG API SUCCESS ==========");
@@ -144,17 +127,24 @@ export async function GET(req: NextRequest) {
     console.error("Message:", error?.message);
     console.error("Stack:", error?.stack);
 
-    return NextResponse.json(
-      { error: error.message },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }
 // POST /api/blogs — create a new blog post
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { title, category, author, readTime, status, excerpt, content, image, date } = body;
+    const {
+      title,
+      category,
+      author,
+      readTime,
+      status,
+      excerpt,
+      content,
+      image,
+      date,
+    } = body;
 
     if (!title?.trim()) {
       return NextResponse.json({ error: "Title is required" }, { status: 400 });
@@ -167,21 +157,30 @@ export async function POST(req: NextRequest) {
 
     const now = Timestamp.now();
     const ref = await addDoc(collection(db, "blogs"), {
-      title:     title.trim(),
+      title: title.trim(),
       slug,
-      category:  category  || "General",
-      author:    author    || "",
-      readTime:  readTime  || "5 Min Read",
-      status:    status    || "Draft",
-      excerpt:   excerpt   || "",
-      content:   content   || "",
-      image:     image     || "",
-      date:      date      || new Date().toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" }),
+      category: category || "General",
+      author: author || "",
+      readTime: readTime || "5 Min Read",
+      status: status || "Draft",
+      excerpt: excerpt || "",
+      content: content || "",
+      image: image || "",
+      date:
+        date ||
+        new Date().toLocaleDateString("en-US", {
+          month: "long",
+          day: "numeric",
+          year: "numeric",
+        }),
       createdAt: now,
       updatedAt: now,
     });
 
-    return NextResponse.json({ id: ref.id, slug, message: "Blog post created" }, { status: 201 });
+    return NextResponse.json(
+      { id: ref.id, slug, message: "Blog post created" },
+      { status: 201 },
+    );
   } catch (error: any) {
     console.error("[POST /api/blogs]", error);
     return NextResponse.json({ error: error.message }, { status: 500 });

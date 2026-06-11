@@ -12,7 +12,7 @@ export function Tabs({ tabs, defaultActive = 0 }: any) {
           <button
             key={i}
             onClick={() => setActive(i)}
-            className={`relative px-1 py-4 text-sm font-medium transition-colors whitespace-nowrap ${active === i ? 'text-[#00e5ff]' : 'text-[#94a3b8] hover:text-[#cbd5f5]'}`}
+            className={`relative px-1 py-4 text-sm font-medium transition-colors whitespace-nowrap ${active === i ? "text-[#00e5ff]" : "text-[#94a3b8] hover:text-[#cbd5f5]"}`}
           >
             {tab.label}
             {active === i && (

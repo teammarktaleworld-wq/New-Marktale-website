@@ -1,63 +1,69 @@
+"use client";
 
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import {
+  MapPin,
+  Phone,
+  Mail,
+  Send,
+  CheckCircle,
+  AlertCircle,
+  Loader2,
+} from "lucide-react";
+import { services } from "@/lib/servicesData";
 
-
-
-
-
-'use client';
-
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { MapPin, Phone, Mail, Send, CheckCircle, AlertCircle, Loader2 } from 'lucide-react';
-import { services } from '@/lib/servicesData';
-
-type Status = 'idle' | 'loading' | 'success' | 'error';
+type Status = "idle" | "loading" | "success" | "error";
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
-    name: '',
-    phone: '',
-    email: '',
-    service: 'Marketing as a Service (MaaS)',
-    message: '',
+    name: "",
+    phone: "",
+    email: "",
+    service: "Marketing as a Service (MaaS)",
+    message: "",
   });
-  const [status, setStatus] = useState<Status>('idle');
-  const [errorMsg, setErrorMsg] = useState('');
+  const [status, setStatus] = useState<Status>("idle");
+  const [errorMsg, setErrorMsg] = useState("");
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >,
   ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setStatus('loading');
-    setErrorMsg('');
+    setStatus("loading");
+    setErrorMsg("");
 
     try {
-      const res = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
 
       const data = await res.json();
 
       if (!res.ok || !data.success) {
-        throw new Error(data.error || 'Something went wrong. Please try again.');
+        throw new Error(
+          data.error || "Something went wrong. Please try again.",
+        );
       }
 
-      setStatus('success');
+      setStatus("success");
       setFormData({
-        name: '',
-        phone: '',
-        email: '',
-        service: 'Marketing as a Service (MaaS)',
-        message: '',
+        name: "",
+        phone: "",
+        email: "",
+        service: "Marketing as a Service (MaaS)",
+        message: "",
       });
     } catch (err: any) {
-      setStatus('error');
+      setStatus("error");
       setErrorMsg(err.message);
     }
   };
@@ -66,7 +72,6 @@ export default function ContactForm() {
     <section className="py-24 bg-white">
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-
           {/* ── Contact Info ─────────────────────────────────────────────── */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -80,8 +85,8 @@ export default function ContactForm() {
               Ready to Start <br /> Your Project?
             </h2>
             <p className="text-gray-600 leading-relaxed mb-12 max-w-lg font-body">
-              Whether you need a full digital transformation or a specific marketing campaign,
-              our team is ready to help you scale.
+              Whether you need a full digital transformation or a specific
+              marketing campaign, our team is ready to help you scale.
             </p>
 
             <div className="space-y-8">
@@ -95,15 +100,19 @@ export default function ContactForm() {
                     +91-85878 70707
                   </a>
                 </div> */}
-              
 
               <div className="flex items-start">
                 <div className="w-12 h-12 bg-neutral-100 rounded-lg flex items-center justify-center text-kestone-black mr-6 shrink-0">
                   <Mail size={24} />
                 </div>
                 <div>
-                  <h4 className="text-lg font-bold text-kestone-black mb-1">Email Us</h4>
-                  <a href="mailto:hello@marktaleworld.com" className="text-gray-600 hover:text-kestone-red transition-colors">
+                  <h4 className="text-lg font-bold text-kestone-black mb-1">
+                    Email Us
+                  </h4>
+                  <a
+                    href="mailto:hello@marktaleworld.com"
+                    className="text-gray-600 hover:text-kestone-red transition-colors"
+                  >
                     hello@marktaleworld.com
                   </a>
                 </div>
@@ -114,9 +123,12 @@ export default function ContactForm() {
                   <MapPin size={24} />
                 </div>
                 <div>
-                  <h4 className="text-lg font-bold text-kestone-black mb-1">Visit Us</h4>
+                  <h4 className="text-lg font-bold text-kestone-black mb-1">
+                    Visit Us
+                  </h4>
                   <p className="text-gray-600 mb-4">
-                    Plot no. 141, Sec. 14, Dwarka,<br />
+                    Plot no. 141, Sec. 14, Dwarka,
+                    <br />
                     New Delhi – 110078 Bharat
                   </p>
                   <div className="w-full h-48 rounded-lg overflow-hidden border border-gray-200">
@@ -155,20 +167,23 @@ export default function ContactForm() {
             className="bg-neutral-50 p-6 md:p-12 rounded-3xl border border-gray-100"
           >
             {/* Success state */}
-            {status === 'success' ? (
+            {status === "success" ? (
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 className="flex flex-col items-center justify-center h-full text-center py-16 gap-4"
               >
                 <CheckCircle size={56} className="text-green-500" />
-                <h3 className="text-2xl font-bold text-kestone-black">Message Sent!</h3>
+                <h3 className="text-2xl font-bold text-kestone-black">
+                  Message Sent!
+                </h3>
                 <p className="text-gray-500 max-w-sm">
-                  Thanks for reaching out. We've received your enquiry and will respond within 24 hours.
-                  A confirmation email is on its way to you.
+                  Thanks for reaching out. We've received your enquiry and will
+                  respond within 24 hours. A confirmation email is on its way to
+                  you.
                 </p>
                 <button
-                  onClick={() => setStatus('idle')}
+                  onClick={() => setStatus("idle")}
                   className="mt-4 px-6 py-2.5 bg-kestone-black text-white rounded-lg text-sm font-semibold hover:bg-kestone-red transition-colors"
                 >
                   Send Another
@@ -178,7 +193,10 @@ export default function ContactForm() {
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label htmlFor="name" className="block text-sm font-bold text-gray-700 mb-2 uppercase tracking-wide">
+                    <label
+                      htmlFor="name"
+                      className="block text-sm font-bold text-gray-700 mb-2 uppercase tracking-wide"
+                    >
                       Name
                     </label>
                     <input
@@ -193,7 +211,10 @@ export default function ContactForm() {
                     />
                   </div>
                   <div>
-                    <label htmlFor="phone" className="block text-sm font-bold text-gray-700 mb-2 uppercase tracking-wide">
+                    <label
+                      htmlFor="phone"
+                      className="block text-sm font-bold text-gray-700 mb-2 uppercase tracking-wide"
+                    >
                       Phone
                     </label>
                     <input
@@ -210,7 +231,10 @@ export default function ContactForm() {
                 </div>
 
                 <div>
-                  <label htmlFor="email" className="block text-sm font-bold text-gray-700 mb-2 uppercase tracking-wide">
+                  <label
+                    htmlFor="email"
+                    className="block text-sm font-bold text-gray-700 mb-2 uppercase tracking-wide"
+                  >
                     Email
                   </label>
                   <input
@@ -226,7 +250,10 @@ export default function ContactForm() {
                 </div>
 
                 <div>
-                  <label htmlFor="service" className="block text-sm font-bold text-gray-700 mb-2 uppercase tracking-wide">
+                  <label
+                    htmlFor="service"
+                    className="block text-sm font-bold text-gray-700 mb-2 uppercase tracking-wide"
+                  >
                     Service Interest
                   </label>
                   <select
@@ -247,7 +274,10 @@ export default function ContactForm() {
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-sm font-bold text-gray-700 mb-2 uppercase tracking-wide">
+                  <label
+                    htmlFor="message"
+                    className="block text-sm font-bold text-gray-700 mb-2 uppercase tracking-wide"
+                  >
                     Message
                   </label>
                   <textarea
@@ -262,7 +292,7 @@ export default function ContactForm() {
                 </div>
 
                 {/* Error banner */}
-                {status === 'error' && (
+                {status === "error" && (
                   <div className="flex items-center gap-3 p-4 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm">
                     <AlertCircle size={18} className="shrink-0" />
                     {errorMsg}
@@ -271,10 +301,10 @@ export default function ContactForm() {
 
                 <button
                   type="submit"
-                  disabled={status === 'loading'}
+                  disabled={status === "loading"}
                   className="w-full py-4 bg-kestone-black text-white font-bold rounded-lg hover:bg-kestone-red transition-colors flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed"
                 >
-                  {status === 'loading' ? (
+                  {status === "loading" ? (
                     <>
                       <Loader2 size={18} className="animate-spin" />
                       Sending...
@@ -294,16 +324,3 @@ export default function ContactForm() {
     </section>
   );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-

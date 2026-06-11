@@ -111,17 +111,6 @@
 //   }
 // }
 
-
-
-
-
-
-
-
-
-
-
-
 // app/api/blogs/[id]/route.ts
 
 import { NextRequest, NextResponse } from "next/server";
@@ -141,7 +130,7 @@ import {
 // GET /api/blogs/[id] — get single blog by Firestore id OR slug
 export async function GET(
   req: NextRequest,
-  { params }: { params: Promise<{ id: string }> }
+  { params }: { params: Promise<{ id: string }> },
 ) {
   try {
     const { id } = await params;
@@ -156,18 +145,13 @@ export async function GET(
       return NextResponse.json({
         id: snap.id,
         ...data,
-        createdAt:
-          data.createdAt?.toDate?.()?.toISOString() ?? data.createdAt,
-        updatedAt:
-          data.updatedAt?.toDate?.()?.toISOString() ?? data.updatedAt,
+        createdAt: data.createdAt?.toDate?.()?.toISOString() ?? data.createdAt,
+        updatedAt: data.updatedAt?.toDate?.()?.toISOString() ?? data.updatedAt,
       });
     }
 
     // Fall back: treat as slug
-    const slugQ = query(
-      collection(db, "blogs"),
-      where("slug", "==", id)
-    );
+    const slugQ = query(collection(db, "blogs"), where("slug", "==", id));
 
     const slugSnap = await getDocs(slugQ);
 
@@ -178,46 +162,34 @@ export async function GET(
       return NextResponse.json({
         id: d.id,
         ...data,
-        createdAt:
-          data.createdAt?.toDate?.()?.toISOString() ?? data.createdAt,
-        updatedAt:
-          data.updatedAt?.toDate?.()?.toISOString() ?? data.updatedAt,
+        createdAt: data.createdAt?.toDate?.()?.toISOString() ?? data.createdAt,
+        updatedAt: data.updatedAt?.toDate?.()?.toISOString() ?? data.updatedAt,
       });
     }
 
-    return NextResponse.json(
-      { error: "Blog post not found" },
-      { status: 404 }
-    );
+    return NextResponse.json({ error: "Blog post not found" }, { status: 404 });
   } catch (error: any) {
     console.error("[GET /api/blogs/[id]]", error);
 
-    return NextResponse.json(
-      { error: error.message },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }
 
 // PATCH /api/blogs/[id] — partial update
 export async function PATCH(
   req: NextRequest,
-  { params }: { params: Promise<{ id: string }> }
+  { params }: { params: Promise<{ id: string }> },
 ) {
   try {
     const { id } = await params;
     const body = await req.json();
 
-    const {
-      id: _id,
-      createdAt: _ca,
-      ...updates
-    } = body;
+    const { id: _id, createdAt: _ca, ...updates } = body;
 
     if (Object.keys(updates).length === 0) {
       return NextResponse.json(
         { error: "No fields to update" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -227,7 +199,7 @@ export async function PATCH(
     if (!snap.exists()) {
       return NextResponse.json(
         { error: "Blog post not found" },
-        { status: 404 }
+        { status: 404 },
       );
     }
 
@@ -251,17 +223,14 @@ export async function PATCH(
   } catch (error: any) {
     console.error("[PATCH /api/blogs/[id]]", error);
 
-    return NextResponse.json(
-      { error: error.message },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }
 
 // DELETE /api/blogs/[id]
 export async function DELETE(
   req: NextRequest,
-  { params }: { params: Promise<{ id: string }> }
+  { params }: { params: Promise<{ id: string }> },
 ) {
   try {
     const { id } = await params;
@@ -272,7 +241,7 @@ export async function DELETE(
     if (!snap.exists()) {
       return NextResponse.json(
         { error: "Blog post not found" },
-        { status: 404 }
+        { status: 404 },
       );
     }
 
@@ -285,9 +254,6 @@ export async function DELETE(
   } catch (error: any) {
     console.error("[DELETE /api/blogs/[id]]", error);
 
-    return NextResponse.json(
-      { error: error.message },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }
