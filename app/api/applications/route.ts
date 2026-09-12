@@ -8,6 +8,8 @@ import { getFirestore, Timestamp } from "firebase-admin/firestore";
 
 // ─── Firebase Admin ───────────────────────────────────────────────────────────
 function getAdminDb() {
+
+  
   if (!getApps().length) {
     initializeApp({
       credential: cert({
