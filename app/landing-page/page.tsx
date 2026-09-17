@@ -416,8 +416,8 @@ export default function BrandBuildingLandingPage() {
                     scrollToSection(sectionId);
                   }}
                   className={`rounded-full px-4 py-2 text-[10px] font-black uppercase tracking-[0.08em] transition ${activeSection === sectionId
-                      ? "bg-[#111827] text-white shadow-md"
-                      : "text-[#667085] hover:bg-black/5 hover:text-[#111827]"
+                    ? "bg-[#111827] text-white shadow-md"
+                    : "text-[#667085] hover:bg-black/5 hover:text-[#111827]"
                     }`}
                 >
                   {link.name}
@@ -511,8 +511,8 @@ export default function BrandBuildingLandingPage() {
                   scrollToSection(sectionId);
                 }}
                 className={`shrink-0 rounded-full px-4 py-2 text-[10px] font-black uppercase tracking-[0.08em] ${activeSection === sectionId
-                    ? "bg-[#111827] text-white shadow-sm"
-                    : "bg-white/80 text-[#667085]"
+                  ? "bg-[#111827] text-white shadow-sm"
+                  : "bg-white/80 text-[#667085]"
                   }`}
               >
                 {link.name}
@@ -590,8 +590,8 @@ export default function BrandBuildingLandingPage() {
                     setHeroIndex(index)
                   }
                   className={`h-1.5 rounded-full transition-all ${index === heroIndex
-                      ? "w-9 bg-[#111827]"
-                      : "w-2 bg-black/20"
+                    ? "w-9 bg-[#111827]"
+                    : "w-2 bg-black/20"
                     }`}
                 />
               ))}
@@ -1169,8 +1169,8 @@ export default function BrandBuildingLandingPage() {
                     <ChevronDown
                       size={17}
                       className={`shrink-0 transition-transform ${isOpen
-                          ? "rotate-180"
-                          : ""
+                        ? "rotate-180"
+                        : ""
                         }`}
                     />
                   </button>
@@ -1209,6 +1209,7 @@ export default function BrandBuildingLandingPage() {
       {/* =========================================================
           FOOTER
       ========================================================= */}
+      
       <footer className="bg-[#111827] px-5 py-10 text-white sm:px-8">
         <div className="mx-auto max-w-7xl">
 
@@ -1223,7 +1224,7 @@ export default function BrandBuildingLandingPage() {
                 className="inline-flex items-center transition-transform hover:scale-105"
               >
                 <Image
-                  src="/logos/MarkTale-logo-transparent-dark-text.png"
+                  src="/logos/MarkTale-logo-transparent.png"
                   alt="MarkTale"
                   width={1003}
                   height={372}
@@ -1258,12 +1259,9 @@ export default function BrandBuildingLandingPage() {
                 rel="noreferrer"
                 aria-label="WhatsApp"
                 onClick={() =>
-                  trackEvent(
-                    "WhatsApp_Click",
-                    {
-                      location: "footer",
-                    }
-                  )
+                  trackEvent("WhatsApp_Click", {
+                    location: "footer",
+                  })
                 }
                 className="text-white/50 transition hover:text-white"
               >
@@ -1277,12 +1275,9 @@ export default function BrandBuildingLandingPage() {
                 rel="noreferrer"
                 aria-label="Instagram"
                 onClick={() =>
-                  trackEvent(
-                    "Instagram_Click",
-                    {
-                      location: "footer",
-                    }
-                  )
+                  trackEvent("Instagram_Click", {
+                    location: "footer",
+                  })
                 }
                 className="text-white/50 transition hover:text-white"
               >
@@ -1298,12 +1293,9 @@ export default function BrandBuildingLandingPage() {
             <a
               href="tel:+918527664228"
               onClick={() =>
-                trackEvent(
-                  "Call_Click",
-                  {
-                    location: "footer",
-                  }
-                )
+                trackEvent("Call_Click", {
+                  location: "footer",
+                })
               }
               className="group flex items-center gap-3"
             >
@@ -1330,13 +1322,9 @@ export default function BrandBuildingLandingPage() {
               target="_blank"
               rel="noreferrer"
               onClick={() =>
-                trackEvent(
-                  "WhatsApp_Click",
-                  {
-                    location:
-                      "footer_contact",
-                  }
-                )
+                trackEvent("WhatsApp_Click", {
+                  location: "footer_contact",
+                })
               }
               className="group flex items-center gap-3"
             >
@@ -1379,16 +1367,17 @@ export default function BrandBuildingLandingPage() {
           {/* FOOTER BOTTOM */}
           <div className="mt-8 flex flex-col gap-3 border-t border-white/10 pt-5 text-[10px] text-white/30 sm:flex-row sm:items-center sm:justify-between">
             <p>
-              © {new Date().getFullYear()} MarkTale.
-              All rights reserved.
+              © {new Date().getFullYear()} MarkTale. All rights reserved.
             </p>
 
             <p className="font-medium">
               Brand identity · Websites · Social media · SEO
             </p>
           </div>
+
         </div>
       </footer>
+
 
       {/* =========================================================
           MOBILE CTA
