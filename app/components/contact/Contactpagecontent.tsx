@@ -775,7 +775,7 @@ const cards = [
   {
     icon: '📍',
     label: 'Location',
-    value: 'New Delhi, India',
+    value: 'India, UAE',
     color: 'rgba(6,182,212,0.15)',
     textColor: '#22D3EE',
     delay: 0.08,
@@ -1049,17 +1049,22 @@ function ContactForm() {
             </div>
 
             <div className="flex items-start gap-4">
-              <div className="w-11 h-11 bg-gray-50 border border-gray-100 rounded-xl flex items-center justify-center shrink-0">
-                <Phone size={20} className="text-gray-700" />
-              </div>
               <div>
                 <p className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-0.5">Call Us</p>
-                <a
-                  href={`tel:+${CONTACT_PHONE_RAW}`}
-                  className="text-sm font-semibold text-kestone-black hover:text-kestone-red transition-colors"
-                >
-                  {CONTACT_PHONE}
-                </a>
+                <div className="flex flex-nowrap items-center gap-2">
+                  <a
+                    href={`tel:+${CONTACT_PHONE_RAW}`}
+                    className="inline-flex items-center gap-1.5 whitespace-nowrap rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm font-semibold text-kestone-black hover:border-kestone-red hover:text-kestone-red transition-colors"
+                  >
+                    <Phone size={14} /> {CONTACT_PHONE}
+                  </a>
+                  <a
+                    href="tel:+971582426107"
+                    className="inline-flex items-center gap-1.5 whitespace-nowrap rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm font-semibold text-kestone-black hover:border-kestone-red hover:text-kestone-red transition-colors"
+                  >
+                    <Phone size={14} /> +971-582426107
+                  </a>
+                </div>
               </div>
             </div>
 
@@ -1070,11 +1075,9 @@ function ContactForm() {
               <div>
                 <p className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-0.5">Visit Us</p>
                 <p className="text-sm font-semibold text-kestone-black leading-relaxed">
-                  Head Office: Plot no. 141, Sector 14, Dwarka, New Delhi - 110078
-
-                  Branch Office: BB Ganj, Muzaffarpur, Bihar - 842001
-
-                  Branch Office: NRI Apartment, Sector 58, Seawoods, Navi Mumbai, Maharashtra 400706
+                  Delhi- Dwarka, New Delhi - 110078
+                  <br />
+                  UAE- Discovery Garden, Dubai
 
                 </p>
               </div>

@@ -383,7 +383,7 @@ export default function TeamCTA() {
       icon: Mail,
       label: "Email Us",
       // value: "teammarktaleworld@gmail.com",
-      value: process.env.NEXT_PUBLIC_CONTACT_EMAIL!,
+      value: process.env.NEXT_PUBLIC_CONTACT_EMAIL || "marktaleworld@gmail.com",
       color: "yellow",
     },
     {

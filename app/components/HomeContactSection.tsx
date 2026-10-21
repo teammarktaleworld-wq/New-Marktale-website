@@ -589,21 +589,37 @@ export default function HomeContactSection() {
     //   color: "blue",
     // },
     {
-  icon: Phone,
-  text: process.env.NEXT_PUBLIC_CONTACT_PHONE!,
-  href: `tel:${process.env.NEXT_PUBLIC_CONTACT_PHONE_RAW}`,
-  color: "blue",
-},
-
+      icon: MapPin,
+      text: "Delhi- Dwarka, New Delhi - 110078",
+      href: "#",
+      color: "black",
+    },
+    {
+      icon: Phone,
+      text: process.env.NEXT_PUBLIC_CONTACT_PHONE ?? "+91-8587870707",
+      href: `tel:${process.env.NEXT_PUBLIC_CONTACT_PHONE_RAW ?? "918587870707"}`,
+      color: "blue",
+    },
+    {
+      icon: MapPin,
+      text: "UAE- Discovery Garden, Dubai",
+      href: "#",
+      color: "black",
+    },
+    {
+      icon: Phone,
+      text: "+971-582426107",
+      href: "tel:+971582426107",
+      color: "blue",
+    },
     {
       icon: Mail,
       // text: "hello@marktaleworld.com",
       // href: "mailto:hello@marktaleworld.com",
-      text: process.env.NEXT_PUBLIC_CONTACT_EMAIL,
-href: `mailto:${process.env.NEXT_PUBLIC_CONTACT_EMAIL}`,
+      text: process.env.NEXT_PUBLIC_CONTACT_EMAIL || "marktaleworld@gmail.com",
+      href: `mailto:${process.env.NEXT_PUBLIC_CONTACT_EMAIL || "marktaleworld@gmail.com"}`,
       color: "yellow",
     },
-    { icon: MapPin, text: "Dwarka, New Delhi Bharat", href: "#", color: "black" },
   ];
 
   const trustStats = [

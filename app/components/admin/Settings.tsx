@@ -173,7 +173,7 @@ export default function Settings() {
     tagline: "Turning Your Tale into Sales",
     email: process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "teammarktaleworld@gmail.com",
     // phone: "",
-    address: "Plot no. 141, Sec. 14, Dwarka, New Delhi – 110078",
+  address: "Delhi- Dwarka, New Delhi - 110078 / UAE- Discovery Garden, Dubai",
     growth: "10x",
     brands: "150+",
     success: "98%",

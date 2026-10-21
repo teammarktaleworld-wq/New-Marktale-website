@@ -710,11 +710,9 @@ export default function ContactForm() {
               <div>
                 <p className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-0.5">Visit Us</p>
                 <p className="text-sm font-semibold text-kestone-black leading-relaxed">
-                  Head Office: Plot No. 141, Sector 14, Dwarka, New Delhi - 110078
-
-                  Branch Office: BB Ganj, Muzaffarpur, Bihar - 842001
-
-                  Branch Office: NRI Apartment, Sector 58, Seawoods, Navi Mumbai, Maharashtra 400706            </p>
+                  Delhi- Dwarka, New Delhi - 110078
+                  <br />
+                  UAE- Discovery Garden, Dubai            </p>
               </div>
             </div>
 

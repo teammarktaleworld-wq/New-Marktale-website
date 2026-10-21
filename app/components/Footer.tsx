@@ -631,25 +631,37 @@ export default function Footer() {
               <li className="flex items-start gap-3 group">
                 <MapPin size={18} className="text-blue-400 mt-0.5 flex-shrink-0 group-hover:scale-110 transition-transform" />
                 <span className="text-white/50 text-sm group-hover:text-white/70 transition-colors">
-                  Plot no. 141, Sec. 14, Dwarka, New Delhi – 110078
+                  Delhi- Dwarka, New Delhi - 110078
                 </span>
               </li>
               <li className="flex items-center gap-3 group">
                 <Phone size={18} className="text-blue-400 group-hover:scale-110 transition-transform" />
                 <a
-                  href={`tel:${process.env.NEXT_PUBLIC_CONTACT_PHONE_RAW}`}
+                  href={`tel:${process.env.NEXT_PUBLIC_CONTACT_PHONE_RAW ?? "918587870707"}`}
                   className="text-white/50 hover:text-blue-400 transition-colors text-sm"
                 >
-                  {process.env.NEXT_PUBLIC_CONTACT_PHONE}
+                  {process.env.NEXT_PUBLIC_CONTACT_PHONE ?? "+91-8587870707"}
+                </a>
+              </li>
+              <li className="flex items-start gap-3 group">
+                <MapPin size={18} className="text-blue-400 mt-0.5 flex-shrink-0 group-hover:scale-110 transition-transform" />
+                <span className="text-white/50 text-sm group-hover:text-white/70 transition-colors">
+                  UAE- Discovery Garden, Dubai
+                </span>
+              </li>
+              <li className="flex items-center gap-3 group">
+                <Phone size={18} className="text-blue-400 group-hover:scale-110 transition-transform" />
+                <a href="tel:+971582426107" className="text-white/50 hover:text-blue-400 transition-colors text-sm">
+                  +971-582426107
                 </a>
               </li>
               <li className="flex items-center gap-3 group">
                 <Mail size={18} className="text-blue-400 group-hover:scale-110 transition-transform" />
                 <a
-                  href={`mailto:${process.env.NEXT_PUBLIC_CONTACT_EMAIL}`}
+                  href={`mailto:${process.env.NEXT_PUBLIC_CONTACT_EMAIL || "marktaleworld@gmail.com"}`}
                   className="text-white/50 hover:text-blue-400 transition-colors text-sm"
                 >
-                  {process.env.NEXT_PUBLIC_CONTACT_EMAIL}
+                  {process.env.NEXT_PUBLIC_CONTACT_EMAIL || "marktaleworld@gmail.com"}
                 </a>
               </li>
             </ul>
