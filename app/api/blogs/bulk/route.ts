@@ -1,9 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import { cert, getApps, initializeApp } from "firebase-admin/app";
 import { getAuth as getAdminAuth } from "firebase-admin/auth";
-import { getFirestore as getAdminFirestore } from "firebase-admin/firestore";
+import { getFirestore as getAdminFirestore, FieldValue as AdminFieldValue } from "firebase-admin/firestore";
 import { db as clientDb } from "@/lib/firebase";
-import { collection, addDoc, Timestamp } from "firebase/firestore";
+import { collection, addDoc, serverTimestamp as clientServerTimestamp } from "firebase/firestore";
 import * as XLSX from "xlsx";
 import {
   formatContentToHtml,
@@ -221,15 +221,21 @@ export async function POST(req: NextRequest) {
           status,
           image,
           date,
-          createdAt: Timestamp.now(),
-          updatedAt: Timestamp.now(),
         };
 
         if (useAdminDb) {
-          const docRef = await useAdminDb.collection("blogs").add(blogData);
+          const docRef = await useAdminDb.collection("blogs").add({
+            ...blogData,
+            createdAt: AdminFieldValue.serverTimestamp(),
+            updatedAt: AdminFieldValue.serverTimestamp(),
+          });
           created.push({ id: docRef.id, title, slug, category, status });
         } else {
-          const docRef = await addDoc(collection(clientDb, "blogs"), blogData);
+          const docRef = await addDoc(collection(clientDb, "blogs"), {
+            ...blogData,
+            createdAt: clientServerTimestamp(),
+            updatedAt: clientServerTimestamp(),
+          });
           created.push({ id: docRef.id, title, slug, category, status });
         }
       } catch (err: any) {

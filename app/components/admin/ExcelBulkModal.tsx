@@ -30,7 +30,7 @@ import {
   ParsedBlogRow,
 } from "@/lib/blog-excel-utils";
 import { auth, db } from "@/lib/firebase";
-import { collection, addDoc, Timestamp } from "firebase/firestore";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 
 interface ExcelBulkModalProps {
   onClose: () => void;
@@ -317,8 +317,8 @@ export default function ExcelBulkModal({ onClose, onSuccess }: ExcelBulkModalPro
           try {
             await addDoc(collection(db, "blogs"), {
               ...item,
-              createdAt: Timestamp.now(),
-              updatedAt: Timestamp.now(),
+              createdAt: serverTimestamp(),
+              updatedAt: serverTimestamp(),
             });
             created.push({ title: item.title, slug: item.slug });
           } catch (itemErr: any) {
