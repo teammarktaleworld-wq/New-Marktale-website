@@ -33,6 +33,13 @@ yarn-error.log*
 # env files (can opt-in for committing if needed)
 .env*
 
+# local bulk blog import instructions & excel templates
+/BLOG_BULK_IMPORT_GUIDE.md
+/BLOG_EXCEL_BULK_IMPORT_GUIDE.md
+*.xlsx
+*.xls
+*.csv
+
 # vercel
 .vercel
 

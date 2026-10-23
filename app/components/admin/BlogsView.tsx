@@ -775,6 +775,9 @@ import {
   query,
   Timestamp,
 } from "firebase/firestore";
+import ExcelBulkModal from "./ExcelBulkModal";
+import { FileSpreadsheet, Download } from "lucide-react";
+import { downloadBlankExcelTemplate } from "@/lib/blog-excel-utils";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 type BlogStatus = "Published" | "Draft";
@@ -1168,9 +1171,10 @@ function BlogModal({
 
 // ─── Bulk Upload Modal ────────────────────────────────────────────────────────
 function BulkModal({ onClose, onUpload, isUploading, result }: {
-  onClose: () => void; onUpload: (f: File) => void; isUploading: boolean; result: any;
+  onClose: () => void; onUpload: (f: File, author: string) => void; isUploading: boolean; result: any;
 }) {
   const [file, setFile] = useState<File | null>(null);
+  const [author, setAuthor] = useState("");
 
   return (
     <div style={T.overlay} onClick={(e) => e.target === e.currentTarget && !isUploading && onClose()}>
@@ -1182,9 +1186,23 @@ function BulkModal({ onClose, onUpload, isUploading, result }: {
             <li>Open your Google Doc with all blog content</li>
             <li>Each blog must start with a marker: <strong style={{ color: c.text }}>BLOG 1</strong>, <strong style={{ color: c.text }}>BLOG 2</strong>, etc.</li>
             <li>The line after the marker becomes the title</li>
-            <li>First paragraph after title = excerpt; rest = content</li>
+            <li>Add a category line after each title, for example <strong style={{ color: c.text }}>Category: Business</strong>. Options: Leadership, Career Growth, Productivity, Mindset, Technology, Business, Wellness, Finance</li>
+            <li>First paragraph after the category = excerpt; rest = content</li>
+            <li>Choose the author for all articles in the form below</li>
             <li>Download as <strong style={{ color: c.text }}>.docx</strong> format</li>
           </ol>
+        </div>
+        <div style={T.fg}>
+          <label style={T.label}>Author Name</label>
+          <input
+            type="text"
+            value={author}
+            onChange={(e) => setAuthor(e.target.value)}
+            placeholder="Enter author name for these articles"
+            style={T.input}
+            required
+          />
+          <div style={{ fontSize: 11, color: c.faint, marginTop: 5 }}>This author name will be used for every article in this upload.</div>
         </div>
         <div style={T.fg}>
           <label style={T.label}>Upload .docx File</label>
@@ -1212,7 +1230,7 @@ function BulkModal({ onClose, onUpload, isUploading, result }: {
         )}
         <div style={T.actions}>
           <button style={btn("ghost")} onClick={onClose} disabled={isUploading}>Cancel</button>
-          <button style={btn("primary")} disabled={!file || isUploading} onClick={() => file && onUpload(file)}>
+          <button style={btn("primary")} disabled={!file || !author.trim() || isUploading} onClick={() => file && onUpload(file, author.trim())}>
             {isUploading ? "Importing..." : "Import Articles"}
           </button>
         </div>
@@ -1332,7 +1350,7 @@ export default function BlogsView() {
   };
 
   // ── Bulk upload ──────────────────────────────────────────────────────────
-  const handleBulkUpload = async (file: File) => {
+  const handleBulkUpload = async (file: File, author: string) => {
     try {
       setIsBulkUploading(true);
       setBulkResult(null);
@@ -1341,6 +1359,7 @@ export default function BlogsView() {
       const idToken = await user.getIdToken();
       const fd = new FormData();
       fd.append("file", file);
+      fd.append("author", author);
       const res  = await fetch("/api/blogs/bulk", {
         method: "POST",
         headers: { Authorization: `Bearer ${idToken}` },
@@ -1397,13 +1416,18 @@ export default function BlogsView() {
             {blogs.length} total &nbsp;·&nbsp; {published} published
           </div>
         </div>
-        <div style={{ display: "flex", gap: 10 }}>
-          <button style={btn("ghost")} onClick={() => { setBulkResult(null); setBulkOpen(true); }}>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-              <polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/>
-            </svg>
-            Bulk Import
+        <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+          <button
+            style={btn("ghost")}
+            onClick={() => downloadBlankExcelTemplate()}
+            title="Download empty sample Excel template ready to fill and import"
+          >
+            <Download size={14} />
+            Download Sample Excel
+          </button>
+          <button style={btn("ghost")} onClick={() => setBulkOpen(true)}>
+            <FileSpreadsheet size={14} />
+            Bulk Import (Excel)
           </button>
           <button style={btn("primary")} onClick={() => setModal("add")}>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -1628,11 +1652,11 @@ export default function BlogsView() {
         />
       )}
       {bulkOpen && (
-        <BulkModal
-          onClose={() => !isBulkUploading && setBulkOpen(false)}
-          onUpload={handleBulkUpload}
-          isUploading={isBulkUploading}
-          result={bulkResult}
+        <ExcelBulkModal
+          onClose={() => setBulkOpen(false)}
+          onSuccess={async () => {
+            await fetchBlogs();
+          }}
         />
       )}
       {confirm && (
