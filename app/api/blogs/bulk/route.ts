@@ -1,11 +1,48 @@
 import { NextRequest, NextResponse } from "next/server";
-import { db } from "@/lib/firebase";
-import { collection, addDoc, Timestamp } from "firebase/firestore";
+import { cert, getApps, initializeApp } from "firebase-admin/app";
+import { getAuth } from "firebase-admin/auth";
+import { getFirestore, Timestamp } from "firebase-admin/firestore";
+
+function getAdminApp() {
+  const existingApp = getApps().find((app) => app.name === "[DEFAULT]");
+  if (existingApp) return existingApp;
+
+  const projectId = process.env.FIREBASE_ADMIN_PROJECT_ID;
+  const clientEmail = process.env.FIREBASE_ADMIN_CLIENT_EMAIL;
+  const privateKey = process.env.FIREBASE_ADMIN_PRIVATE_KEY?.replace(/\\n/g, "\n");
+
+  if (!projectId || !clientEmail || !privateKey) {
+    throw new Error("Firebase Admin credentials are not configured on the server");
+  }
+
+  return initializeApp({
+    credential: cert({ projectId, clientEmail, privateKey }),
+  });
+}
 
 // POST /api/blogs/bulk — parse uploaded .docx and create multiple blog posts
 // Expects multipart/form-data with a "file" field containing a .docx file
 export async function POST(req: NextRequest) {
   try {
+    const token = req.headers.get("authorization")?.match(/^Bearer\s+(.+)$/i)?.[1];
+    if (!token) {
+      return NextResponse.json({ error: "Sign in as an admin to import blogs" }, { status: 401 });
+    }
+
+    const adminApp = getAdminApp();
+    let decodedToken;
+    try {
+      decodedToken = await getAuth(adminApp).verifyIdToken(token);
+    } catch {
+      return NextResponse.json({ error: "Your session is invalid or expired. Sign in again." }, { status: 401 });
+    }
+
+    const adminDb = getFirestore(adminApp);
+    const userSnapshot = await adminDb.collection("users").doc(decodedToken.uid).get();
+    if (userSnapshot.data()?.role !== "admin") {
+      return NextResponse.json({ error: "Admin access is required to import blogs" }, { status: 403 });
+    }
+
     const formData = await req.formData();
     const file = formData.get("file") as File | null;
 
@@ -74,7 +111,7 @@ export async function POST(req: NextRequest) {
           .replace(/[^a-z0-9]+/g, "-")
           .replace(/(^-|-$)/g, "");
 
-        const docRef = await addDoc(collection(db, "blogs"), {
+        const docRef = await adminDb.collection("blogs").add({
           title: title.trim(),
           slug,
           excerpt: excerpt.trim(),
@@ -83,7 +120,7 @@ export async function POST(req: NextRequest) {
           author: "Admin",
           readTime: `${Math.max(1, Math.ceil(content.split(" ").length / 200))} Min Read`,
           image: "",
-          status: "published",
+          status: "Published",
           date: new Date().toISOString(),
           createdAt: Timestamp.now(),
           updatedAt: Timestamp.now(),

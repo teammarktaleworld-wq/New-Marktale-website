@@ -763,7 +763,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { db } from "@/lib/firebase";
+import { auth, db } from "@/lib/firebase";
 import {
   collection,
   getDocs,
@@ -1336,10 +1336,18 @@ export default function BlogsView() {
     try {
       setIsBulkUploading(true);
       setBulkResult(null);
+      const user = auth.currentUser;
+      if (!user) throw new Error("Sign in as an admin to import blogs");
+      const idToken = await user.getIdToken();
       const fd = new FormData();
       fd.append("file", file);
-      const res  = await fetch("/api/blogs/bulk", { method: "POST", body: fd });
+      const res  = await fetch("/api/blogs/bulk", {
+        method: "POST",
+        headers: { Authorization: `Bearer ${idToken}` },
+        body: fd,
+      });
       const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Blog import failed");
       setBulkResult(data);
       await fetchBlogs();
     } catch (err: any) {
